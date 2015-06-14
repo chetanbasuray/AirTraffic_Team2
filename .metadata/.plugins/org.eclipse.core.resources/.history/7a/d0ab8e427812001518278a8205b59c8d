@@ -101,4 +101,5 @@ public List<CateringBean> getCateringList() {
 public void setCateringList(List<CateringBean> cateringList) {
 	this.cateringList = cateringList;
 }
+
 }

@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.AirTraffic.Team2.Models;
+
+/**
+ * @author JOY
+ *
+ */
+public class CateringBean {
+private int catering_Id;
+private String catering_type;
+private double catering_price;
+private String catering_drink;
+
+}

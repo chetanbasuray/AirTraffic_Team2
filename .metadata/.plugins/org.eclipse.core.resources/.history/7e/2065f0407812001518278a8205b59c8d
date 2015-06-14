@@ -89,16 +89,4 @@ public List<AirlineBean> getAirlineList() {
 public void setAirlineList(List<AirlineBean> airlineList) {
 	this.airlineList = airlineList;
 }
-/**
- * @return the cateringList
- */
-public List<CateringBean> getCateringList() {
-	return cateringList;
-}
-/**
- * @param cateringList the cateringList to set
- */
-public void setCateringList(List<CateringBean> cateringList) {
-	this.cateringList = cateringList;
-}
 }

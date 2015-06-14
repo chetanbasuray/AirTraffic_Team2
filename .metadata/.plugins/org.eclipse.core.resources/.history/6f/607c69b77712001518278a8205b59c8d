@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.AirTraffic.Team2.Models;
+
+import java.util.Date;
+
+/**
+ * @author JOY
+ *
+ */
+public class BoardingPassBean {
+private int boardingPass_id;
+private Date boarding_Time;
+private PersonBean checkInPerson;
+private LuggageBean luggageBean;
+private TicketBean ticketBean;
+
+}
