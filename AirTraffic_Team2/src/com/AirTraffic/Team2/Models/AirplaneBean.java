@@ -1,6 +1,7 @@
 package com.AirTraffic.Team2.Models;
 
 import java.util.Date;
+import java.util.List;
 
 public class AirplaneBean {
 
@@ -18,6 +19,7 @@ public class AirplaneBean {
 	private int seatversion_business_class_seats;
 	private int seatversion_economy_class_seats;
 	private Date airplane_last_maintenance_date;
+	private List<FlightBean> flightBeanList;
 	/**
 	 * @return the airplane_id
 	 */
@@ -189,5 +191,17 @@ public class AirplaneBean {
 	public void setAirplane_last_maintenance_date(
 			Date airplane_last_maintenance_date) {
 		this.airplane_last_maintenance_date = airplane_last_maintenance_date;
+	}
+	/**
+	 * @return the flightBeanList
+	 */
+	public List<FlightBean> getFlightBeanList() {
+		return flightBeanList;
+	}
+	/**
+	 * @param flightBeanList the flightBeanList to set
+	 */
+	public void setFlightBeanList(List<FlightBean> flightBeanList) {
+		this.flightBeanList = flightBeanList;
 	}
 }

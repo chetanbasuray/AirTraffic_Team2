@@ -22,6 +22,7 @@ private int flight_business_class_checkin_luggage_limit;
 private int flight_economy_class_checkin_luggage_limit;
 private FlightSegmentBean flightSegmentBean;
 private List<String> flightDaysList;
+private List<AirplaneBean> airplaneBeanList;
 /**
  * @return the flight_Id
  */
@@ -160,5 +161,17 @@ public List<String> getFlightDaysList() {
  */
 public void setFlightDaysList(List<String> flightDaysList) {
 	this.flightDaysList = flightDaysList;
+}
+/**
+ * @return the airplaneBeanList
+ */
+public List<AirplaneBean> getAirplaneBeanList() {
+	return airplaneBeanList;
+}
+/**
+ * @param airplaneBeanList the airplaneBeanList to set
+ */
+public void setAirplaneBeanList(List<AirplaneBean> airplaneBeanList) {
+	this.airplaneBeanList = airplaneBeanList;
 }
 }

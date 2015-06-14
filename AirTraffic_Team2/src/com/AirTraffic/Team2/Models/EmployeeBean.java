@@ -12,6 +12,7 @@ private PersonBean personBean;
 private String employee_bankAccountNumber;
 private String employee_division;
 private double employee_salary;
+private AirportBean airportBean;
 /**
  * @return the personBean
  */
@@ -59,5 +60,17 @@ public double getEmployee_salary() {
  */
 public void setEmployee_salary(double employee_salary) {
 	this.employee_salary = employee_salary;
+}
+/**
+ * @return the airportBean
+ */
+public AirportBean getAirportBean() {
+	return airportBean;
+}
+/**
+ * @param airportBean the airportBean to set
+ */
+public void setAirportBean(AirportBean airportBean) {
+	this.airportBean = airportBean;
 }
 }

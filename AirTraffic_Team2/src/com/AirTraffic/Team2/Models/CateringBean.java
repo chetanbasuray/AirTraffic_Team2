@@ -3,6 +3,8 @@
  */
 package com.AirTraffic.Team2.Models;
 
+import java.util.List;
+
 /**
  * @author JOY
  *
@@ -12,6 +14,7 @@ private int catering_Id;
 private String catering_type;
 private double catering_price;
 private String catering_drink;
+private List<AirportBean> airportBeanList;
 /**
  * @return the catering_Id
  */
@@ -59,5 +62,17 @@ public String getCatering_drink() {
  */
 public void setCatering_drink(String catering_drink) {
 	this.catering_drink = catering_drink;
+}
+/**
+ * @return the airportBeanList
+ */
+public List<AirportBean> getAirportBeanList() {
+	return airportBeanList;
+}
+/**
+ * @param airportBeanList the airportBeanList to set
+ */
+public void setAirportBeanList(List<AirportBean> airportBeanList) {
+	this.airportBeanList = airportBeanList;
 }
 }
