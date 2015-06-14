@@ -1,0 +1,13 @@
+package com.AirTraffic.Team2.Models;
+
+public class AirplaneBean {
+
+	private String airplane_id;
+	private int airplane_range_of_tank;
+	private String airplane_model;
+	private String airplane_make;
+	private String airplane_starting_seat_number;
+	private String airplane_ending_seat_number;
+	private String airplane_starting_seat_class;
+	private String airplane_ending_seat_class;
+}

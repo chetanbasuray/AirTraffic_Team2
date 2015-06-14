@@ -1,0 +1,5 @@
+package com.AirTraffic.Team2.Models;
+
+public class AirplaneBean {
+
+}
