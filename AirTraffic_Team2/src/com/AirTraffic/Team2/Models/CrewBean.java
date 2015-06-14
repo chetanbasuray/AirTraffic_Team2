@@ -4,6 +4,7 @@
 package com.AirTraffic.Team2.Models;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author JOY
@@ -13,6 +14,7 @@ public class CrewBean {
 private int crew_Id;
 private Date crew_start_working_time;
 private Date crew_end_working_time;
+private List<EmployeeBean> employeeBeanList;
 /**
  * @return the crew_Id
  */
@@ -48,5 +50,17 @@ public Date getCrew_end_working_time() {
  */
 public void setCrew_end_working_time(Date crew_end_working_time) {
 	this.crew_end_working_time = crew_end_working_time;
+}
+/**
+ * @return the employeeBeanList
+ */
+public List<EmployeeBean> getEmployeeBeanList() {
+	return employeeBeanList;
+}
+/**
+ * @param employeeBeanList the employeeBeanList to set
+ */
+public void setEmployeeBeanList(List<EmployeeBean> employeeBeanList) {
+	this.employeeBeanList = employeeBeanList;
 }
 }

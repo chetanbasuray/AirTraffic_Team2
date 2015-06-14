@@ -4,6 +4,7 @@
 package com.AirTraffic.Team2.Models;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author JOY
@@ -20,6 +21,7 @@ private int flight_first_class_checkin_luggage_limit;
 private int flight_business_class_checkin_luggage_limit;
 private int flight_economy_class_checkin_luggage_limit;
 private FlightSegmentBean flightSegmentBean;
+private List<String> flightDaysList;
 /**
  * @return the flight_Id
  */
@@ -146,5 +148,17 @@ public FlightSegmentBean getFlightSegmentBean() {
  */
 public void setFlightSegmentBean(FlightSegmentBean flightSegmentBean) {
 	this.flightSegmentBean = flightSegmentBean;
+}
+/**
+ * @return the flightDaysList
+ */
+public List<String> getFlightDaysList() {
+	return flightDaysList;
+}
+/**
+ * @param flightDaysList the flightDaysList to set
+ */
+public void setFlightDaysList(List<String> flightDaysList) {
+	this.flightDaysList = flightDaysList;
 }
 }
