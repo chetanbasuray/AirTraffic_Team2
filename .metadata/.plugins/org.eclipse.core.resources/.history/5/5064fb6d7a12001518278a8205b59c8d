@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.AirTraffic.Team2.Models;
+
+import java.util.Date;
+
+/**
+ * @author JOY
+ *
+ */
+public class FlightLogBean {
+private int flightlog_id;
+private Date flightlog_date;
+private FlightBean flightBean;
+private RunwayBean runwayBean;
+private Date flightlog_scheduleddeparturetime;
+private Date flightlog_scheduledarrivaltime;
+private Date flightlog_actualdeparturetime;
+private Date flightlog_actualdarrivaltime;
+}

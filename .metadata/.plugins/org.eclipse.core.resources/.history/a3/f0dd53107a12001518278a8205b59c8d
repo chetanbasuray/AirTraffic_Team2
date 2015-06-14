@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package com.AirTraffic.Team2.Models;
+
+/**
+ * @author JOY
+ *
+ */
+public class FlightBean {
+private String flight_Id;
+private Date scheduled_departure_time;
+private Date scheduled_arrival_time;
+private int flight_first_class_cabin_luggage_limit;
+private int flight_business_class_cabin_luggage_limit;
+private int flight_economy_class_cabin_luggage_limit;
+private int flight_first_class_checkin_luggage_limit;
+private int flight_business_class_checkin_luggage_limit;
+private int flight_economy_class_checkin_luggage_limit;
+}

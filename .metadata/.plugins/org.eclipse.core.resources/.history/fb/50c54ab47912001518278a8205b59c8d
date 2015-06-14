@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.AirTraffic.Team2.Models;
+
+/**
+ * @author JOY
+ *
+ */
+public class EmployeeBean {
+private PersonBean personBean;
+private String employee_bankAccountNumber;
+private String employee_division;
+private double employee_salary;
+
+}
