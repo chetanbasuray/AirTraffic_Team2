@@ -11,6 +11,6 @@ public class EmployeeBean {
 private PersonBean personBean;
 private String employee_bankAccountNumber;
 private String employee_division;
-private double employee_salary;
+provate double employee_salary;
 
 }

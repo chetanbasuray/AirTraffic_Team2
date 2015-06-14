@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package com.AirTraffic.Team2.Models;
+
+/**
+ * @author JOY
+ *
+ */
+public class CrewBean {
+private int crew_Id;
+private Date crew_start_working_time;
+private Date crew_end_working_time;
+
+}
