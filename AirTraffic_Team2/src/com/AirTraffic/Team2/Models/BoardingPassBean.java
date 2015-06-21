@@ -4,6 +4,7 @@
 package com.AirTraffic.Team2.Models;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Chetan
@@ -14,7 +15,19 @@ private int boardingPass_id;
 private Date boarding_Time;
 private PersonBean checkInPerson;
 private PersonBean passenger;
-private LuggageBean luggageBean;
+private List<LuggageBean> luggageBean;
+/**
+ * @return the luggageBean
+ */
+public List<LuggageBean> getLuggageBean() {
+  return luggageBean;
+}
+/**
+ * @param luggageBean the luggageBean to set
+ */
+public void setLuggageBean(List<LuggageBean> luggageBean) {
+  this.luggageBean = luggageBean;
+}
 private TicketBean ticketBean;
 private FlightBean flightBean;
 private GateBean gateBean;
@@ -66,18 +79,6 @@ public PersonBean getCheckInPerson() {
  */
 public void setCheckInPerson(PersonBean checkInPerson) {
 	this.checkInPerson = checkInPerson;
-}
-/**
- * @return the luggageBean
- */
-public LuggageBean getLuggageBean() {
-	return luggageBean;
-}
-/**
- * @param luggageBean the luggageBean to set
- */
-public void setLuggageBean(LuggageBean luggageBean) {
-	this.luggageBean = luggageBean;
 }
 /**
  * @return the ticketBean

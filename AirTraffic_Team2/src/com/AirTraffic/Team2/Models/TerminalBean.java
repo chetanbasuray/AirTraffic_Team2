@@ -6,24 +6,10 @@ package com.AirTraffic.Team2.Models;
  */
 public class TerminalBean {
   private int terminal_id;
-  private LocationBean terminal_location;
+  private String terminal_location;
   private String terminal_type;
   private AirportBean airport_iata;
-  private CounterBean counterBean;
   
-  
-  /**
- * @return the counterBean
- */
-public CounterBean getCounterBean() {
-	return counterBean;
-}
-/**
- * @param counterBean the counterBean to set
- */
-public void setCounterBean(CounterBean counterBean) {
-	this.counterBean = counterBean;
-}
 /**
    * @return the terminal_id
    */
@@ -39,13 +25,13 @@ public void setCounterBean(CounterBean counterBean) {
   /**
    * @return the terminal_location
    */
-  public LocationBean getTerminal_location() {
+  public String getTerminal_location() {
     return terminal_location;
   }
   /**
    * @param terminal_location the terminal_location to set
    */
-  public void setTerminal_location(LocationBean terminal_location) {
+  public void setTerminal_location(String terminal_location) {
     this.terminal_location = terminal_location;
   }
   /**

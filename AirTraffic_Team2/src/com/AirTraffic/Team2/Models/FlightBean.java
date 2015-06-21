@@ -15,6 +15,9 @@ private String flight_Id;
 private Date flight_scheduled_departure_time;
 private Date flight_scheduled_arrival_time;
 private int flight_first_class_cabin_luggage_limit;
+private double flight_first_class_price;
+private double flight_business_class_price;
+private double flight_economy_class_price;
 private int flight_business_class_cabin_luggage_limit;
 private int flight_economy_class_cabin_luggage_limit;
 private int flight_first_class_checkin_luggage_limit;
@@ -26,7 +29,42 @@ private List<AirplaneBean> airplaneBeanList;
 private GateBean gateBean;
 private List<CateringBean> cateringBeanList;
 
-
+/**
+ * @return the flight_first_class_price
+ */
+public double getFlight_first_class_price() {
+  return flight_first_class_price;
+}
+/**
+ * @param flight_first_class_price the flight_first_class_price to set
+ */
+public void setFlight_first_class_price(double flight_first_class_price) {
+  this.flight_first_class_price = flight_first_class_price;
+}
+/**
+ * @return the flight_business_class_price
+ */
+public double getFlight_business_class_price() {
+  return flight_business_class_price;
+}
+/**
+ * @param flight_business_class_price the flight_business_class_price to set
+ */
+public void setFlight_business_class_price(double flight_business_class_price) {
+  this.flight_business_class_price = flight_business_class_price;
+}
+/**
+ * @return the flight_economy_class_price
+ */
+public double getFlight_economy_class_price() {
+  return flight_economy_class_price;
+}
+/**
+ * @param flight_economy_class_price the flight_economy_class_price to set
+ */
+public void setFlight_economy_class_price(double flight_economy_class_price) {
+  this.flight_economy_class_price = flight_economy_class_price;
+}
 /**
  * @return the cateringBeanList
  */
