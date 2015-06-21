@@ -3,10 +3,11 @@
  */
 package com.AirTraffic.Team2.Models;
 
+import java.util.Date;
 import java.util.List;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class CateringBean {
@@ -15,6 +16,47 @@ private String catering_type;
 private double catering_price;
 private String catering_drink;
 private List<AirportBean> airportBeanList;
+private List<FlightBean> flightBeanList;
+private List<Integer> quantityList;
+private List<Date> orderDateList;
+
+
+/**
+ * @return the flightBeanList
+ */
+public List<FlightBean> getFlightBeanList() {
+	return flightBeanList;
+}
+/**
+ * @param flightBeanList the flightBeanList to set
+ */
+public void setFlightBeanList(List<FlightBean> flightBeanList) {
+	this.flightBeanList = flightBeanList;
+}
+/**
+ * @return the quantityList
+ */
+public List<Integer> getQuantityList() {
+	return quantityList;
+}
+/**
+ * @param quantityList the quantityList to set
+ */
+public void setQuantityList(List<Integer> quantityList) {
+	this.quantityList = quantityList;
+}
+/**
+ * @return the orderDateList
+ */
+public List<Date> getOrderDateList() {
+	return orderDateList;
+}
+/**
+ * @param orderDateList the orderDateList to set
+ */
+public void setOrderDateList(List<Date> orderDateList) {
+	this.orderDateList = orderDateList;
+}
 /**
  * @return the catering_Id
  */

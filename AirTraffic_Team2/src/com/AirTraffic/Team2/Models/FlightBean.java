@@ -24,9 +24,21 @@ private FlightSegmentBean flightSegmentBean;
 private List<String> flightDaysList;
 private List<AirplaneBean> airplaneBeanList;
 private GateBean gateBean;
+private List<CateringBean> cateringBeanList;
 
 
-
+/**
+ * @return the cateringBeanList
+ */
+public List<CateringBean> getCateringBeanList() {
+	return cateringBeanList;
+}
+/**
+ * @param cateringBeanList the cateringBeanList to set
+ */
+public void setCateringBeanList(List<CateringBean> cateringBeanList) {
+	this.cateringBeanList = cateringBeanList;
+}
 /**
  * @return the gateBeanList
  */

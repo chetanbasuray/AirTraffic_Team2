@@ -17,7 +17,46 @@ private Date counter_closing_time;
 private boolean counter_hasCash;
 private String counter_status;
 private TerminalBean terminalBean;
+private EmployeeBean employeeBean;
+private Date startTime;
+private Date endTime;
 
+/**
+ * @return the employeeBean
+ */
+public EmployeeBean getEmployeeBean() {
+	return employeeBean;
+}
+/**
+ * @param employeeBean the employeeBean to set
+ */
+public void setEmployeeBean(EmployeeBean employeeBean) {
+	this.employeeBean = employeeBean;
+}
+/**
+ * @return the startTime
+ */
+public Date getStartTime() {
+	return startTime;
+}
+/**
+ * @param startTime the startTime to set
+ */
+public void setStartTime(Date startTime) {
+	this.startTime = startTime;
+}
+/**
+ * @return the endTime
+ */
+public Date getEndTime() {
+	return endTime;
+}
+/**
+ * @param endTime the endTime to set
+ */
+public void setEndTime(Date endTime) {
+	this.endTime = endTime;
+}
 /**
  * @return the counter_id
  */

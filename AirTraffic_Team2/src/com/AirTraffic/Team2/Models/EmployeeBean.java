@@ -4,7 +4,7 @@
 package com.AirTraffic.Team2.Models;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class EmployeeBean {
@@ -13,6 +13,20 @@ private String employee_bankAccountNumber;
 private String employee_division;
 private double employee_salary;
 private AirportBean airportBean;
+private CounterBean counterBean;
+
+/**
+ * @return the counterBean
+ */
+public CounterBean getCounterBean() {
+	return counterBean;
+}
+/**
+ * @param counterBean the counterBean to set
+ */
+public void setCounterBean(CounterBean counterBean) {
+	this.counterBean = counterBean;
+}
 /**
  * @return the personBean
  */
