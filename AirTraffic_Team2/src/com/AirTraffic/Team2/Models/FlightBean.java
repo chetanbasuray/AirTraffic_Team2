@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class FlightBean {
@@ -23,6 +23,22 @@ private int flight_economy_class_checkin_luggage_limit;
 private FlightSegmentBean flightSegmentBean;
 private List<String> flightDaysList;
 private List<AirplaneBean> airplaneBeanList;
+private GateBean gateBean;
+
+
+
+/**
+ * @return the gateBeanList
+ */
+public GateBean getGateBean() {
+	return gateBean;
+}
+/**
+ * @param gateBeanList the gateBeanList to set
+ */
+public void setGateBean(GateBean gateBean) {
+	this.gateBean = gateBean;
+}
 /**
  * @return the flight_Id
  */

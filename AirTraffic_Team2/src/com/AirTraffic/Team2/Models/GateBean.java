@@ -3,8 +3,11 @@
  */
 package com.AirTraffic.Team2.Models;
 
+import java.util.Date;
+import java.util.List;
+
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class GateBean {
@@ -12,7 +15,34 @@ public class GateBean {
   private String gate_location;
   private String gate_type;
   private TerminalBean terminal_id;
-  /**
+  private FlightBean flightBean;
+  private Date parksAt;
+
+/**
+ * @return the flightBean
+ */
+public FlightBean getFlightBean() {
+	return flightBean;
+}
+/**
+ * @param flightBean the flightBean to set
+ */
+public void setFlightBean(FlightBean flightBean) {
+	this.flightBean = flightBean;
+}
+/**
+ * @return the parksAt
+ */
+public Date getParksAt() {
+	return parksAt;
+}
+/**
+ * @param parksAt the parksAt to set
+ */
+public void setParksAt(Date parksAt) {
+	this.parksAt = parksAt;
+}
+/**
    * @return the gate_id
    */
   public int getGate_id() {

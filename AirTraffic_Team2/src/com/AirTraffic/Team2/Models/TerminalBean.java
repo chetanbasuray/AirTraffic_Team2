@@ -4,7 +4,7 @@
 package com.AirTraffic.Team2.Models;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class TerminalBean {
@@ -12,7 +12,22 @@ public class TerminalBean {
   private LocationBean terminal_location;
   private String terminal_type;
   private AirportBean airport_iata;
+  private CounterBean counterBean;
+  
+  
   /**
+ * @return the counterBean
+ */
+public CounterBean getCounterBean() {
+	return counterBean;
+}
+/**
+ * @param counterBean the counterBean to set
+ */
+public void setCounterBean(CounterBean counterBean) {
+	this.counterBean = counterBean;
+}
+/**
    * @return the terminal_id
    */
   public int getTerminal_id() {

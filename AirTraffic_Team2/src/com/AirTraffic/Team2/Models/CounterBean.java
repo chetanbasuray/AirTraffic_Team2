@@ -6,7 +6,7 @@ package com.AirTraffic.Team2.Models;
 import java.util.Date;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class CounterBean {
@@ -17,6 +17,7 @@ private Date counter_closing_time;
 private boolean counter_hasCash;
 private String counter_status;
 private TerminalBean terminalBean;
+
 /**
  * @return the counter_id
  */
