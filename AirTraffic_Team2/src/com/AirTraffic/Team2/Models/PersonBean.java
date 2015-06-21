@@ -1,12 +1,9 @@
-/**
- * 
- */
 package com.AirTraffic.Team2.Models;
 
 import java.util.Date;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class PersonBean {

@@ -1,10 +1,7 @@
-/**
- * 
- */
 package com.AirTraffic.Team2.Models;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class RunwayBean {

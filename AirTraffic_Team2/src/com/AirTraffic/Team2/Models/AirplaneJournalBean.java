@@ -6,7 +6,7 @@ package com.AirTraffic.Team2.Models;
 import java.util.Date;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class AirplaneJournalBean {
@@ -17,6 +17,7 @@ private Date airplaneJournal_journeyStartDate;
 private int airplaneJournal_totalJourneyDuration;
 private MaintenanceTeamBean maintenanceTeamBean;
 private String airplaneJournal_maintenanceTeamRemarks;
+
 /**
  * @return the airplaneBean
  */

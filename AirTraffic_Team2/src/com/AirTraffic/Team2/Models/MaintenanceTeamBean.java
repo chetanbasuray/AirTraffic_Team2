@@ -1,13 +1,10 @@
-/**
- * 
- */
 package com.AirTraffic.Team2.Models;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class MaintenanceTeamBean {

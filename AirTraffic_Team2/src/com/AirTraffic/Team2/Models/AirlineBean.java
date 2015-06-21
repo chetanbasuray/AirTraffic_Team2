@@ -1,12 +1,9 @@
-/**
- * hmm
- */
 package com.AirTraffic.Team2.Models;
 
 import java.util.List;
 
 /**
- * @author JOY
+ * @author Chetan
  *
  */
 public class AirlineBean {
