@@ -11,6 +11,20 @@ import java.util.Date;
  */
 public class TicketBean {
 	private int ticket_id;
+	private double ticket_price;
+	private Date ticket_booking_date;
+	private String ticket_pnr;
+	private int ticket_paymentType_id;
+	private String paymenttype;
+	private int ticket_bookingStatus_id;
+	private String bookingstatus;
+	private int ticket_currency_id;
+	private String currency;
+	private PersonBean customer_id;
+	private CounterBean ticket_counter_id;
+	private Date ticket_verificationTime;
+	private boolean checkInStatus;
+
 
 	/**
 	 * @return the ticket_id
@@ -221,18 +235,4 @@ public class TicketBean {
 	public void setCheckInStatus(boolean checkInStatus) {
 		this.checkInStatus = checkInStatus;
 	}
-
-	private double ticket_price;
-	private Date ticket_booking_date;
-	private String ticket_pnr;
-	private int ticket_paymentType_id;
-	private String paymenttype;
-	private int ticket_bookingStatus_id;
-	private String bookingstatus;
-	private int ticket_currency_id;
-	private String currency;
-	private PersonBean customer_id;
-	private CounterBean ticket_counter_id;
-	private Date ticket_verificationTime;
-	private boolean checkInStatus;
 }
