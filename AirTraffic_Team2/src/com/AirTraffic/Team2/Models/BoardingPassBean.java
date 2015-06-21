@@ -13,11 +13,24 @@ public class BoardingPassBean {
 private int boardingPass_id;
 private Date boarding_Time;
 private PersonBean checkInPerson;
+private PersonBean passenger;
 private LuggageBean luggageBean;
 private TicketBean ticketBean;
 private FlightBean flightBean;
 private GateBean gateBean;
 private TerminalBean terminalBean;
+/**
+ * @return the passenger
+ */
+public PersonBean getPassenger() {
+  return passenger;
+}
+/**
+ * @param passenger the passenger to set
+ */
+public void setPassenger(PersonBean passenger) {
+  this.passenger = passenger;
+}
 /**
  * @return the boardingPass_id
  */

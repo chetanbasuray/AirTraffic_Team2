@@ -1,7 +1,6 @@
 package com.AirTraffic.Team2.Models;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author Chetan

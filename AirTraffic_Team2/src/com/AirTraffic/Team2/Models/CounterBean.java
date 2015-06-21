@@ -16,23 +16,11 @@ private Date counter_opening_time;
 private Date counter_closing_time;
 private boolean counter_hasCash;
 private String counter_status;
-private TerminalBean terminalBean;
-private EmployeeBean employeeBean;
+private TerminalBean terminal;
+private EmployeeBean checkInPersonnel;
 private Date startTime;
 private Date endTime;
 
-/**
- * @return the employeeBean
- */
-public EmployeeBean getEmployeeBean() {
-	return employeeBean;
-}
-/**
- * @param employeeBean the employeeBean to set
- */
-public void setEmployeeBean(EmployeeBean employeeBean) {
-	this.employeeBean = employeeBean;
-}
 /**
  * @return the startTime
  */
@@ -130,15 +118,27 @@ public void setCounter_status(String counter_status) {
 	this.counter_status = counter_status;
 }
 /**
- * @return the terminalBean
+ * @return the terminal
  */
-public TerminalBean getTerminalBean() {
-	return terminalBean;
+public TerminalBean getTerminal() {
+  return terminal;
 }
 /**
- * @param terminalBean the terminalBean to set
+ * @param terminal the terminal to set
  */
-public void setTerminalBean(TerminalBean terminalBean) {
-	this.terminalBean = terminalBean;
+public void setTerminal(TerminalBean terminal) {
+  this.terminal = terminal;
+}
+/**
+ * @return the checkInPersonnel
+ */
+public EmployeeBean getCheckInPersonnel() {
+  return checkInPersonnel;
+}
+/**
+ * @param checkInPersonnel the checkInPersonnel to set
+ */
+public void setCheckInPersonnel(EmployeeBean checkInPersonnel) {
+  this.checkInPersonnel = checkInPersonnel;
 }
 }
