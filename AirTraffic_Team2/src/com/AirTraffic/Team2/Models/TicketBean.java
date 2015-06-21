@@ -24,8 +24,24 @@ public class TicketBean {
   private CounterBean ticket_counter_id;
   private Date ticket_verificationTime;
   private boolean checkInStatus;
+  private Date ticket_journeyDate;
+  
+  
+ /**
+ * @return the ticket_journeyDate
+ */
+public Date getTicket_journeyDate() {
+	return ticket_journeyDate;
+}
 
-  /**
+/**
+ * @param ticket_journeyDate the ticket_journeyDate to set
+ */
+public void setTicket_journeyDate(Date ticket_journeyDate) {
+	this.ticket_journeyDate = ticket_journeyDate;
+}
+
+/**
    * @return the flights
    */
   public List<FlightBean> getFlights() {
