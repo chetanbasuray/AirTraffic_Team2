@@ -18,7 +18,7 @@ import com.AirTraffic.Team2.Models.*;
 
 public class FlightDAO extends AbstractDAO{
 
-	public List<FlightBean> getFlights() throws FlighNotFoundException,SQLException {
+	public List<FlightBean> getFlights() throws FlightNotFoundException,SQLException {
 
 //		java.util.Date date = new java.util.Date();
 //		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -62,7 +62,7 @@ public class FlightDAO extends AbstractDAO{
 					} while (resultSet.next());
 				}
 				else {
-					throw new FlighNotFoundException("Database has no flights!");
+					throw new FlightNotFoundException("Database has no flights!");
 				}
 				resultSet.close();
 			} catch (SQLException e) {
@@ -79,13 +79,13 @@ public class FlightDAO extends AbstractDAO{
 
 
 	@SuppressWarnings("serial")
-	public static class FlighNotFoundException extends Throwable {
-		FlighNotFoundException(String message){
+	public static class FlightNotFoundException extends Throwable {
+		FlightNotFoundException(String message){
 			super(message);
 		}
 	}
 
-		public static void main(String args[]) throws SQLException, FlighNotFoundException, ServletException, IOException{
+		public static void main(String args[]) throws SQLException, FlightNotFoundException, ServletException, IOException{
 			FlightDAO flightDAO = new FlightDAO();
 	
 			List<FlightBean> flightList = flightDAO.getFlights();
