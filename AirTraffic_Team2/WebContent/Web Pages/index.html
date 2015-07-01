@@ -11,11 +11,6 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
-  });
-  </script>
 </head>
 <body>
 <header>
@@ -43,8 +38,8 @@
   <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-king" aria-hidden="true"> Admin Privileges </span></button>
   </div>
 </div>
-
 </header>
+
 <div class="container">
 <div class="panel panel-default">
   <div class="panel-body" style="background: url(http://nyulocal.com/wp-content/uploads/2013/10/The-plane-flying-at-sunset-airliner-photography_1920x1080.jpg);background-size: cover;">
@@ -52,19 +47,47 @@
 <table class = "table">
 <tr>
 <td>
-<input type=text placeholder="From" autocomplete=off autocorrect=off autocapitalize=off spellcheck=false readonly>
+<div class="row">
+  <div class="col-xs-5">
+<div class="input-group input-group-sm">
+  <span class="input-group-addon" id="sizing-addon3">Source</span>
+  <input type=text class="form-control" placeholder="From" autocomplete=off autocorrect=off autocapitalize=off spellcheck=false>
+</div>
+</div>
+
 </td>
 <td>
-<input type=text placeholder="To" autocomplete=off autocorrect=off autocapitalize=off spellcheck=false readonly>
+
+<div class="col-xs-4">
+<div class="input-group input-group-sm">
+  <span class="input-group-addon" id="sizing-addon3">Destination</span>
+  <input type=text class="form-control" placeholder="To" autocomplete=off autocorrect=off autocapitalize=off spellcheck=false>
+</div>
+</div>
+</div>
 </td>
 </tr>
 <tr>
 <td>
-<input type="text" id="datepicker">
+<div class="row">
+  <div class="col-xs-4">
+<div class="input-group input-group-sm">
+  <span class="input-group-addon" id="sizing-addon3">From</span>
+  <input type="date" class="form-control" placeholder="From" aria-describedby="sizing-addon3">
+</div>
+</div>
 </td>
+
 <td>
-<input type="text" id="datepicker">
+  <div class="col-xs-4">
+<div class="input-group input-group-sm">
+  <span class="input-group-addon" id="sizing-addon3">To</span>
+  <input type="date" class="form-control" placeholder="To" aria-describedby="sizing-addon3">
+</div>
+</div>
+</div>
 </td>
+</tr>
 </tr>
 </table>
 <table class = "table">
