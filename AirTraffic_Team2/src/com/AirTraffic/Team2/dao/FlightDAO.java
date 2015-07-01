@@ -94,14 +94,14 @@ public class FlightDAO extends AbstractDAO{
 				System.out.println(flightList.get(i).getFlight_Id());
 				System.out.println(flightList.get(i).getFlight_scheduled_departure_time());
 				System.out.println(flightList.get(i).getFlight_scheduled_arrival_time());
-				System.out.println(flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata());
+				System.out.println(flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()); 
 				System.out.println(flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata());
 				  
 			}
-	//OrderServlet ods = new OrderServlet();
+	SearchFlightServlet sfs = new SearchFlightServlet();
 	//		PartServlet cos = new PartServlet();
 	//		cos.doGet(null, null);
-	//		//		ods.doGet(null,null);
+	sfs.doGet(null,null);
 		}
 
 }
