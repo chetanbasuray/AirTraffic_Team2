@@ -26,7 +26,21 @@ private List<String> flightDaysList;
 private List<AirplaneBean> airplaneBeanList;
 private GateBean gateBean;
 private List<CateringBean> cateringBeanList;
+private String departureDay;
+private String arrivalDay;
 
+public String getArrivalDay() {
+	return arrivalDay;
+}
+public void setArrivalDay(String arrivalDay) {
+	this.arrivalDay = arrivalDay;
+}
+public String getDepartureDay() {
+	return departureDay;
+}
+public void setDepartureDay(String departureDay) {
+	this.departureDay = departureDay;
+}
 /**
  * @return the flight_first_class_price
  */
