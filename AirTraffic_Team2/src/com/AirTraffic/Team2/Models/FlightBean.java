@@ -27,8 +27,23 @@ private List<AirplaneBean> airplaneBeanList;
 private GateBean gateBean;
 private List<CateringBean> cateringBeanList;
 private String departureDay;
+private String departureDate;
 private String arrivalDay;
+private String arrivalDate;
 
+
+public String getArrivalDate() {
+	return arrivalDate;
+}
+public void setArrivalDate(String arrivalDate) {
+	this.arrivalDate = arrivalDate;
+}
+public String getDepartureDate() {
+	return departureDate;
+}
+public void setDepartureDate(String departureDate) {
+	this.departureDate = departureDate;
+}
 public String getArrivalDay() {
 	return arrivalDay;
 }

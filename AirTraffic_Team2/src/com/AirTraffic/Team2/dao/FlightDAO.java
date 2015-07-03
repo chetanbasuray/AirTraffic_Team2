@@ -36,6 +36,7 @@ public class FlightDAO extends AbstractDAO{
 		
 		List<FlightBean> flightList =new ArrayList<FlightBean>();
 		
+		String departureDay=departureDate;
 		java.util.Date date ;
 	    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	    date = formatter.parse(departureDate);
@@ -64,7 +65,8 @@ public class FlightDAO extends AbstractDAO{
 						flight.setFlight_scheduled_departure_time(resultSet.getTime(2));
 						flight.setFlight_scheduled_arrival_time(resultSet.getTime(3));
 						flight.setDepartureDay(resultSet.getString(6));
-						flight.setArrivalDay(arrivalDate);
+						flight.setDepartureDate(departureDay);
+						flight.setArrivalDate(arrivalDate);
 						
 						origin.setAirport_iata(resultSet.getString(4));
 						destination.setAirport_iata(resultSet.getString(5));
@@ -129,7 +131,7 @@ public class FlightDAO extends AbstractDAO{
 //	SearchFlightServlet sfs = new SearchFlightServlet();
 	//		PartServlet cos = new PartServlet();
 	//		cos.doGet(null, null);
-//	sfs.doGet(null,null);
+//	sfs.doPost(null,null);
 		}
 
 }
