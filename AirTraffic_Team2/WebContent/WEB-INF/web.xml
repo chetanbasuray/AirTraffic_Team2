@@ -11,4 +11,14 @@
     <servlet-name>SearchFlightServlet</servlet-name>
     <url-pattern>/searchFlight</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BookFlightServlet</servlet-name>
+    <servlet-class>com.AirTraffic.Team2.Servlets.BookFlightServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookFlightServlet</servlet-name>
+    <url-pattern>/booking</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
