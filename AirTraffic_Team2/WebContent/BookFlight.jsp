@@ -57,9 +57,9 @@ function yesnoCheck() {
  <br>
 
 
-	<form method="get" action="booking">
+	<form method="post" action="booking">
 		New Customer<input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="newCheck"> 
-        Existing Customer <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="existingCheck"><br>
+        Existing Customer <input type="radio" checked="checked" onclick="javascript:yesnoCheck();" name="yesno" id="existingCheck"><br>
     <div id="ifNew" style="display:none">
         First Name <input type='text' id='fname' name='firstName'><br>
         Last Name  <input type='text' id='lname' name='lastName'>
@@ -85,8 +85,9 @@ function yesnoCheck() {
         Country <input type='text' id='custCountry' name='custCountry'>
     </div>
     
-    <div id="ifExisting" style="display:none">   
-        Customer ID<input type='text' id='existingCustID' name='existingCustomerID'><br>       
+    <div id="ifExisting" style="display:block">   
+        Customer ID<input type='text' id='existingCustID' name='existingCustomerID'><br> 
+        <input type="submit" value="View My Data">             
 		<h1 align="center">Booking Information Details</h1>
 		<table width="600" height="300" align=center cellspacing=0 border="0"
 			cellpadding=0>

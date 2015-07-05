@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.AirTraffic.Team2.Models.BookingBean;
-
 import com.AirTraffic.Team2.dao.BookFlightDAO;
 
 
@@ -28,10 +26,6 @@ public class BookFlightServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			
-			BookFlightDAO bookFlightDAO = new BookFlightDAO(); 			
-			
-			List<BookingBean> bookPersonDetails = bookFlightDAO.getPersonDetails("12345678");			
-		    request.setAttribute("personDetails", bookPersonDetails);
 
 		} catch (Throwable e) {
 			request.setAttribute("error", e.getMessage());
@@ -39,11 +33,17 @@ public class BookFlightServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("BookFlight.jsp");		
 		dispatcher.forward(request, response);
 	}
+	
+	
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		 try {
-			 
+			    String customerId = request.getParameter("existingCustomerID").toString();
+				BookFlightDAO bookFlightDAO = new BookFlightDAO(); 		
+				
+				List<BookingBean> bookPersonDetails = bookFlightDAO.getPersonDetails(customerId);			
+			    request.setAttribute("personDetails", bookPersonDetails);
              
          } catch (Throwable e) {
              request.setAttribute("error", e.getMessage());
