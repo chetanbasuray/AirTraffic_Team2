@@ -2,22 +2,18 @@ package com.AirTraffic.Team2.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
 
 import javax.servlet.ServletException;
 
-import com.AirTraffic.Team2.Servlets.SearchFlightServlet;
 import com.AirTraffic.Team2.Models.*;
 
 
@@ -104,7 +100,19 @@ public class BookFlightDAO extends AbstractDAO{
 		public static void main(String args[]) throws SQLException, BooikngPersonNotFoundException, ServletException, IOException, ParseException{
 						
 
-			BookFlightDAO bookFlightDAO = new BookFlightDAO();
+			Document document = new Document();
+
+	        try {
+	            document.open();
+
+	            document.add(new Paragraph("A Hello World PDF document."));
+
+	            document.close(); // no need to close PDFwriter?
+
+	        } catch (DocumentException e) {
+	            e.printStackTrace();
+	        }
+			/*BookFlightDAO bookFlightDAO = new BookFlightDAO();
 	
 			List<BookingBean> bookPersonDetails = bookFlightDAO.getPersonDetails("12345678");
 			System.out.println(bookPersonDetails.size());
@@ -124,7 +132,7 @@ public class BookFlightDAO extends AbstractDAO{
 				System.out.println(bookPersonDetails.get(i).getLocationBean().getState());
 				System.out.println(bookPersonDetails.get(i).getLocationBean().getZipcode());
 				System.out.println(bookPersonDetails.get(i).getLocationBean().getCountry());
-			}
+			}*/
 //	SearchFlightServlet sfs = new SearchFlightServlet();
 	//		PartServlet cos = new PartServlet();
 	//		cos.doGet(null, null);
