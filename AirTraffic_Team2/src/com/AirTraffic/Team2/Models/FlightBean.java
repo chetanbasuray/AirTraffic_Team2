@@ -1,5 +1,6 @@
 package com.AirTraffic.Team2.Models;
 
+import java.sql.Timestamp;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,25 @@ public class FlightBean {
 private String flight_Id;
 private Time flight_scheduled_departure_time;
 private Time flight_scheduled_arrival_time;
+private Timestamp flight_scheduled_departure_timestamp;
+private Timestamp flight_scheduled_arrival_timestamp;
 private int flight_first_class_cabin_luggage_limit;
+
+
+public Timestamp getFlight_scheduled_departure_timestamp() {
+	return flight_scheduled_departure_timestamp;
+}
+public void setFlight_scheduled_departure_timestamp(
+		Timestamp flight_scheduled_departure_timestamp) {
+	this.flight_scheduled_departure_timestamp = flight_scheduled_departure_timestamp;
+}
+public Timestamp getFlight_scheduled_arrival_timestamp() {
+	return flight_scheduled_arrival_timestamp;
+}
+public void setFlight_scheduled_arrival_timestamp(
+		Timestamp flight_scheduled_arrival_timestamp) {
+	this.flight_scheduled_arrival_timestamp = flight_scheduled_arrival_timestamp;
+}
 private double flight_first_class_price;
 private double flight_business_class_price;
 private double flight_economy_class_price;

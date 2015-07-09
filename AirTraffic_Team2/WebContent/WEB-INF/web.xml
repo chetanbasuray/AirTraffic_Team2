@@ -21,4 +21,14 @@
     <url-pattern>/booking</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>AssignRunwayServlet</servlet-name>
+    <servlet-class>com.AirTraffic.Team2.Servlets.AssignRunwayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AssignRunwayServlet</servlet-name>
+    <url-pattern>/assignRunway</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
