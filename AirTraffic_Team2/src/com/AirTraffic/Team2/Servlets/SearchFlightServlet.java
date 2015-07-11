@@ -36,7 +36,7 @@ public class SearchFlightServlet extends HttpServlet {
 		} catch (Throwable e) {
 			request.setAttribute("error", e.getMessage());
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("SearchFlight.jsp");		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/SearchFlight.jsp");		
 		dispatcher.forward(request, response);
 	}
 	
@@ -64,7 +64,7 @@ public class SearchFlightServlet extends HttpServlet {
          } catch (Throwable e) {
              request.setAttribute("error", e.getMessage());
          }         
-		RequestDispatcher dispatcher = request.getRequestDispatcher("SearchFlight.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/SearchFlight.jsp");
 		dispatcher.forward(request, response);
 	}
 }

@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.AirTraffic.Team2.Models.FlightBean;
 import com.AirTraffic.Team2.Models.RunwayBean;
-import com.AirTraffic.Team2.dao.AirplaneJournalDao;
-import com.AirTraffic.Team2.dao.FlightLogDao;
-import com.AirTraffic.Team2.dao.RunwayDao;
+import com.AirTraffic.Team2.Models.Dao.AirplaneJournalDao;
+import com.AirTraffic.Team2.Models.Dao.FlightDao;
+import com.AirTraffic.Team2.Models.Dao.FlightLogDao;
+import com.AirTraffic.Team2.Models.Dao.RunwayDao;
 
 @SuppressWarnings("serial")
 public class AssignRunwayServlet extends HttpServlet {
