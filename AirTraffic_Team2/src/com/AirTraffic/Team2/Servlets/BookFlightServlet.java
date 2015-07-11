@@ -18,7 +18,6 @@ import com.AirTraffic.Team2.dao.BookFlightDAO;
 
 
 @SuppressWarnings("serial")
-@WebServlet("/booking")
 
 public class BookFlightServlet extends HttpServlet {
 

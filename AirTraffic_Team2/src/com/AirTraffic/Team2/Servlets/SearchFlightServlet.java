@@ -22,7 +22,6 @@ import com.AirTraffic.Team2.dao.FlightDAO;
 
 
 @SuppressWarnings("serial")
-@WebServlet("/searchFlight")
 
 public class SearchFlightServlet extends HttpServlet {
 
