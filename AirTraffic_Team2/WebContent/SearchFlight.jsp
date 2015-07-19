@@ -95,17 +95,17 @@ $(document).ready(function() {
 			Arrival Airport<select name="arrivalAirportDdl">		
 			<% for (int i = 0; i < airportIataList.size(); i++) {	 %>				
 				<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
-				<%}
-				
-				}%>				
+			<%}%>			
 			</select> 
-			
+				
 			<br> <br> 
 			<label >Deaprture Date</label> <input
 				type="text" id="departureDate" name="departureDate"> <br> 
 			<label >Arrival Date</label> <input
 				type="text" id="arrivalDate" name="arrivalDate"> <br> 
 			
+				
+		<%}%>
 <table class = "table">
 <tr align="center"><td colspan="4">
   <div class="alert alert-default" role="alert">Please input the number of travellers according to their ages and the class of travel</div>
