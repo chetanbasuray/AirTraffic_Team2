@@ -60,11 +60,32 @@ $(document).ready(function() {
 <br>
 
 <div class="btn-group">
-  <button type="button" class="btn btn-success" class="active"> <span class="glyphicon glyphicon-plane" aria-hidden="true"> Book Flight </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"> Manage Booking </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-scissors" aria-hidden="true"> Cancel Booking </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-king" aria-hidden="true"> Admin Privileges </span></button>
-  </div>
+			<button type="button" class="btn btn-warning" class="active"
+				onclick="location.href='./searchFlight';">
+				<span class="glyphicon glyphicon-plane" aria-hidden="true">Book
+					Flight </span>
+			</button>
+			<button type="button" class="btn btn-success"
+				onclick="location.href='./#';">
+				<span class="glyphicon glyphicon-print" aria-hidden="true">
+					Print Ticket </span>
+			</button>
+			<button type="button" class="btn btn-success"
+				onclick="location.href='./#';">
+				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
+					Cancel Booking </span>
+			</button>
+			<button type="button" class="btn btn-success"
+				onclick="location.href='./#';">
+				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true">
+					Add Flights </span>
+			</button>
+			<button type="button" class="btn btn-success"
+				onclick="location.href='./assignRunway';">
+				<span class="glyphicon glyphicon-king" aria-hidden="true">
+					Assign Runway </span>
+			</button>
+		</div>
 </div>
 
 <div class="container">
@@ -95,17 +116,17 @@ $(document).ready(function() {
 			Arrival Airport<select name="arrivalAirportDdl">		
 			<% for (int i = 0; i < airportIataList.size(); i++) {	 %>				
 				<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
-				<%}
-				
-				}%>				
+			<%}%>			
 			</select> 
-			
+				
 			<br> <br> 
 			<label >Departure Date</label> <input
 				type="text" id="departureDate" name="departureDate"> <br> 
 			<label >Return Date</label> <input
 				type="text" id="arrivalDate" name="arrivalDate"> <br> 
 			
+				
+		<%}%>
 <table class = "table">
 <tr align="center"><td colspan="4">
   <div class="alert alert-default" role="alert">Please input the number of travellers according to their ages and the class of travel</div>
