@@ -82,7 +82,9 @@ function yesnoCheck() {
         City <input type='text' id='custCity' name='custCity'>
         State  <input type='text' id='custState' name='custState'>
         Zipcode <input type='text' id='custZipcode' name='custZipcode'>
-        Country <input type='text' id='custCountry' name='custCountry'>
+        Country <input type='text' id='custCountry' name='custCountry'><br>
+        Submit <input type='submit' id='custdetails' name='custdetails'>
+        
     </div>
     
     <div id="ifExisting" style="display:block">   

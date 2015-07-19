@@ -139,9 +139,9 @@ $(document).ready(function() {
 			</select> 
 			
 			<br> <br> 
-			<label >Deaprture Date</label> <input
+			<label >Departure Date</label> <input
 				type="text" id="departureDate" name="departureDate"> <br> 
-			<label >Arrival Date</label> <input
+			<label >Return Date</label> <input
 				type="text" id="arrivalDate" name="arrivalDate"> <br> 
 			
 
