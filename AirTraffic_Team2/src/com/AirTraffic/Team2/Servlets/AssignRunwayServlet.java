@@ -48,9 +48,7 @@ public class AssignRunwayServlet extends HttpServlet {
       runway.setRunway_id(Integer.parseInt(request.getParameter("availableRunway")));
     }
     // TODO add flightcontroller id from session variables
-    if(flightLogDao.createLog(flight, runway, 1))
-      request.setAttribute("success", "Log Created");
-    else
+    if(!flightLogDao.createLog(flight, runway, 1))
       request.setAttribute("success", "Failed to create Log");
     }catch (Throwable e) {
       request.setAttribute("error", e.getMessage());
