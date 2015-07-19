@@ -14,6 +14,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet" type="text/css" />
@@ -36,81 +44,36 @@ $(document).ready(function() {
 <title>Flights Information</title>
 </head>
 <body>
-	<a href="index.html">Home Page</a>
-	<h1 align="center">Flight details</h1>
+<div class="container">
+<div>
+<div class="btn-group">
+  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-plane" aria-hidden="true"> Book Flight </span></button>
+  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"> Manage Booking </span></button>
+  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-scissors" aria-hidden="true"> Cancel Booking </span></button>
+  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-king" aria-hidden="true"> Admin Privileges </span></button>
+  </div>
+  <div class="btn-group" style="float:right">
+  <button type="button" class="btn btn-danger" class="active">  <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign Out </button>
+<button type="button" class="btn btn-danger" class="active">  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log In</button>
+</div>
+</div>
+<br>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-success" class="active"> <span class="glyphicon glyphicon-plane" aria-hidden="true"> Book Flight </span></button>
+  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"> Manage Booking </span></button>
+  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-scissors" aria-hidden="true"> Cancel Booking </span></button>
+  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-king" aria-hidden="true"> Admin Privileges </span></button>
+  </div>
+</div>
+
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-body" style="background: url(http://nyulocal.com/wp-content/uploads/2013/10/The-plane-flying-at-sunset-airliner-photography_1920x1080.jpg);background-size: cover;">
+
 	<form method=post action="searchFlight">
 
-		<table width="600" height="300" align=center cellspacing=0 border="0"
-		cellpadding=0>
-		<tr>
-			<td>
-				<fieldset id="fieldhead">
-					<legend>Flights Information</legend>
-					<BR>
-					<table align=center cellspacing=1 cellpadding=3>					
-							<div align="center">
-								<table border="1" cellpadding="5">
-									<caption>
-										<h2>List of flights</h2>
-									</caption>
-									<%
-										if (request.getAttribute("error") != null) {
-									%>
-									<h3>No Flights Found</h3>
-									<%=request.getAttribute("error")%>
-									<%
-										} else {
-											if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")=="")))
-											{
-											List<FlightBean> flightList = (ArrayList<FlightBean>) request
-													.getAttribute("flights");
-																						
-									%>
-									<tr>
-										<th>Flight ID</th>
-										<th>Departure Time</th>
-										<th>Arrival Time</th>
-										<th>Departure Airport</th>
-										<th>Arrival airport</th>
-										<th>Departure Date</th>
-										<th>Arrival Date</th>
-										<th>Book Flight</th>
-										
-
-									</tr>
-									<%
-									
-										
-											for (int i = 0; i < flightList.size(); i++) {
-									%>
-									<tr>										
-										<td><%=flightList.get(i).getFlight_Id()%></td>
-										<td><%=flightList.get(i).getFlight_scheduled_departure_time()%></td>
-										<td><%=flightList.get(i).getFlight_scheduled_arrival_time()%></td>										
-										<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getDepartureDate()%></td>
-										<td><%=flightList.get(i).getArrivalDate()%></td>
-										<td><a
-											href="booking?flightId=<%=flightList.get(i).getFlight_Id()%>">Book Flight</a></td>
-
-									</tr>
-									<%
-										}
-									session.setAttribute("flight", flightList);
-									}
-									
-								}								
-									
-									
-									%>
-								</table>
-							</div>
-						</form>
-					</table>
-			</td>
-		</tr>
-	</table>
+		
 	<%
 										if (request.getAttribute("error") != null) {
 									%>
@@ -118,8 +81,7 @@ $(document).ready(function() {
 									<%=request.getAttribute("error")%>
 									<%
 										} else {	  
-	    List<AirportBean> airportIataList = (ArrayList<AirportBean>) request
-		.getAttribute("allIata");							
+	    List<AirportBean> airportIataList = (ArrayList<AirportBean>) request.getAttribute("allIata");							
 		%>
 
 		<div align="center">
@@ -127,7 +89,7 @@ $(document).ready(function() {
 				<% for (int i = 0; i < airportIataList.size(); i++) {	 %>		
 				<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
 				<%}%>				
-			</select> 
+			</select>
 			<br>
 			
 			Arrival Airport<select name="arrivalAirportDdl">		
@@ -144,9 +106,123 @@ $(document).ready(function() {
 			<label >Return Date</label> <input
 				type="text" id="arrivalDate" name="arrivalDate"> <br> 
 			
-
-			<input type="submit" value="Submit">
+<table class = "table">
+<tr align="center"><td colspan="4">
+  <div class="alert alert-default" role="alert">Please input the number of travellers according to their ages and the class of travel</div>
+  </td></tr>
+  <tr>
+  <td align = "center"><span class="badge">ADULT: (12+ YRS )</span></td>
+  <td align = "center"><span class="badge">CHILD: (2-11 YRS )</span></td>
+  <td align = "center"><span class="badge">INFANT: (0-2 YRS )</span></td>
+  <td align = "center"><span class="badge">Class</span></td>
+  </tr>
+  <tr>
+  <td align = "center">
+	<button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+	<span class="label label-warning">1</span>
+    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+  </td>
+  <td align = "center">
+	<button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+	<span class="label label-warning">0</span>
+    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </td>
+    <td align = "center">
+    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+	<span class="label label-warning">0</span>
+    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </td>
+    <td align = "center" valign="bottom">
+<select>
+  <option value="economy">Economy</option>
+  <option value="business">Business</option>
+  <option value="first">First Class</option>
+</select>
+    </td>
+	</tr>
+</table>
+<br><br>
+<button type="submit" class="btn btn-info"> <span class="glyphicon glyphicon-search" aria-hidden="true"> Search </span></button>
+			
 		</div>
 	</form>
+	</div>
+</div>
+</div>
+<div class="container">
+<div class="alert alert-info" role="alert">
+<table width="600" height="300" align=center cellspacing=0 border="0"
+		cellpadding=0>
+		<tr>
+			<td>
+					<div class="panel panel-default"><div class="panel-body">Flight Information
+					
+					<table class="table" align=center cellspacing=1 cellpadding=3>					
+							<div align="center">
+								<table class="table" cellpadding="5">
+									<%
+										if (request.getAttribute("error") != null) {
+									%>
+									<div class="alert alert-danger" role="alert">
+									<%=request.getAttribute("error")%>
+									</div>
+									<%
+										} else {
+											if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")=="")))
+											{
+											List<FlightBean> flightList = (ArrayList<FlightBean>) request.getAttribute("flights");
+																						
+									%>
+									</div>
+									<div class="panel-footer">
+
+									<tr>
+										<th>Flight ID</th>
+										<th>Departure Time</th>
+										<th>Arrival Time</th>
+										<th>Departure Airport</th>
+										<th>Arrival airport</th>
+										<th>Departure Date</th>
+										<th>Return Date</th>
+										<th>Book Flight</th>
+										
+
+									</tr>
+									<%
+											for (int i = 0; i < flightList.size(); i++) {
+									%>
+									
+									<tr>	
+																		
+										<td><%=flightList.get(i).getFlight_Id()%></td>
+										<td><%=flightList.get(i).getFlight_scheduled_departure_time()%></td>
+										<td><%=flightList.get(i).getFlight_scheduled_arrival_time()%></td>										
+										<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
+										<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
+										<td><%=flightList.get(i).getDepartureDate()%></td>
+										<td><%=flightList.get(i).getArrivalDate()%></td>
+										<td><a
+											href="booking?flightId=<%=flightList.get(i).getFlight_Id()%>">Book Flight</a></td>
+									
+									</tr>
+									
+									<%
+										}
+									session.setAttribute("flight", flightList);
+									}
+									
+								}								
+									
+									%>
+									
+								</table>
+								</div>
+					</table>
+			</td>
+		</tr>
+	</table>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

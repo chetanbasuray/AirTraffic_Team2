@@ -21,6 +21,12 @@
 		<%=request.getAttribute("error")%>
 		<%
 		  } else {
+		    if (request.getAttribute("success") != null) {
+		%>
+		<h1>Error in creating log!</h1>
+		<%=request.getAttribute("success")%>
+		<%
+		  }
 		    List<RunwayBean> availRunways = (ArrayList<RunwayBean>) request.getAttribute("runways");
 		    List<FlightBean> incomingFlights = (ArrayList<FlightBean>) request.getAttribute("flights");
 		%>
@@ -38,9 +44,13 @@
 					<label for="incomingFlight">Select incoming Flight:</label> <select
 						class="form-control" id="incomingFlight" name="incomingFlight"
 						size="5">
-						<%for (FlightBean flight : incomingFlights) {%>
+						<%
+						  for (FlightBean flight : incomingFlights) {
+						%>
 						<option value="<%=flight.getFlight_Id()%>"><%=flight.getFlight_Id()%></option>
-						<%}%>
+						<%
+						  }
+						%>
 					</select>
 				</div>
 				<div class="col-md-2"></div>
@@ -49,9 +59,14 @@
 						class="form-control" id="availableRunway" name="availableRunway"
 						size="5">
 
-						<%for (RunwayBean runway : availRunways) {%>
+						<%
+						  for (RunwayBean runway : availRunways) {
+						%>
 						<option value="<%=runway.getRunway_id()%>"><%=runway.getRunway_id()%></option>
-						<%}}%>
+						<%
+						  }
+						  }
+						%>
 					</select>
 				</div>
 

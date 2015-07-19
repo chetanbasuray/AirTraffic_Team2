@@ -31,7 +31,8 @@ public class FlightDAO extends AbstractDAO{
 		String query = "With flightdetails as (select f.flight_id,f.flight_scheduleddeparturetime as departure_time,"
 				+" f.flight_scheduledarrivaltime as arrival_time,fs.origin,fs.destination from flight f "
 				+" inner join flightsegment fs on f.flightsegment_id=fs.flightsegment_id  )"
-				+" select flightdetails.*,flightday.flight_dayofweek from flightdetails inner join flightday on flightdetails.flight_id=flightday.flight_id"
+				+" select flightdetails.*,flightday.flight_dayofweek from flightdetails inner join flightday on flightdetails.flight_id=" +
+				"flightday.flight_id"
 				+" where (flightdetails.origin=? and flightdetails.destination=? and flightday.flight_dayofweek=?);";
 		
 		List<FlightBean> flightList =new ArrayList<FlightBean>();
