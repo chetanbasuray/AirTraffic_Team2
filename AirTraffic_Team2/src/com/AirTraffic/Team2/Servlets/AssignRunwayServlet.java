@@ -33,24 +33,24 @@ public class AssignRunwayServlet extends HttpServlet {
     RequestDispatcher dispatcher = request.getRequestDispatcher("assignRunway.jsp");
     dispatcher.forward(request, response);
   }
-  
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    
+
     try {
-    FlightLogDao flightLogDao = new FlightLogDao();
-    FlightBean flight = new FlightBean();
-    if (request.getParameterMap().containsKey("incomingFlight")){
-      flight.setFlight_Id(request.getParameter("incomingFlight"));
-    }
-    RunwayBean runway = new RunwayBean();
-    if (request.getParameterMap().containsKey("availableRunway")){
-      runway.setRunway_id(Integer.parseInt(request.getParameter("availableRunway")));
-    }
-    // TODO add flightcontroller id from session variables
-    if(!flightLogDao.createLog(flight, runway, 1))
-      request.setAttribute("success", "Failed to create Log");
-    }catch (Throwable e) {
+      FlightLogDao flightLogDao = new FlightLogDao();
+      FlightBean flight = new FlightBean();
+      if (request.getParameterMap().containsKey("incomingFlight")) {
+        flight.setFlight_Id(request.getParameter("incomingFlight"));
+      }
+      RunwayBean runway = new RunwayBean();
+      if (request.getParameterMap().containsKey("availableRunway")) {
+        runway.setRunway_id(Integer.parseInt(request.getParameter("availableRunway")));
+      }
+      // TODO add flightcontroller id from session variables
+      if (!flightLogDao.createLog(flight, runway, 1))
+        request.setAttribute("success", "Failed to create Log");
+    } catch (Throwable e) {
       request.setAttribute("error", e.getMessage());
     }
     RunwayDao runwayDao = new RunwayDao();
