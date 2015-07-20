@@ -27,7 +27,9 @@ public class TicketBean {
   private Date ticket_journeyDate;
   
   
- /**
+  
+
+/**
  * @return the ticket_journeyDate
  */
 public Date getTicket_journeyDate() {

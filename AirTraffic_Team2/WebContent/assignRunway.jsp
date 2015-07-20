@@ -70,7 +70,7 @@
 					Flight </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./printTicket';">
 				<span class="glyphicon glyphicon-print" aria-hidden="true">
 					Print Ticket </span>
 			</button>

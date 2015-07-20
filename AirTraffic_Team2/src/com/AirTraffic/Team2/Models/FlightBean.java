@@ -16,8 +16,34 @@ private Time flight_scheduled_arrival_time;
 private Timestamp flight_scheduled_departure_timestamp;
 private Timestamp flight_scheduled_arrival_timestamp;
 private int flight_first_class_cabin_luggage_limit;
+private String seatNumber;
+private String seatClass;
 
 
+/**
+ * @return the seatNumber
+ */
+public String getSeatNumber() {
+  return seatNumber;
+}
+/**
+ * @param seatNumber the seatNumber to set
+ */
+public void setSeatNumber(String seatNumber) {
+  this.seatNumber = seatNumber;
+}
+/**
+ * @return the seatClass
+ */
+public String getSeatClass() {
+  return seatClass;
+}
+/**
+ * @param seatClass the seatClass to set
+ */
+public void setSeatClass(String seatClass) {
+  this.seatClass = seatClass;
+}
 public Timestamp getFlight_scheduled_departure_timestamp() {
 	return flight_scheduled_departure_timestamp;
 }

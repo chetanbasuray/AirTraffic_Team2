@@ -41,7 +41,7 @@ $(document).ready(function() {
 });
 </script>
 
-<title>Flights Information</title>
+<title>Search FLight</title>
 </head>
 <body>
 <div class="container">
@@ -66,7 +66,7 @@ $(document).ready(function() {
 					Flight </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./printTicket';">
 				<span class="glyphicon glyphicon-print" aria-hidden="true">
 					Print Ticket </span>
 			</button>

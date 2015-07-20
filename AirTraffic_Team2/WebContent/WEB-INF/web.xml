@@ -39,4 +39,13 @@
 		<servlet-name>AssignRunwayServlet</servlet-name>
 		<url-pattern>/assignRunway</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PrintTicketServlet</servlet-name>
+		<servlet-class>com.AirTraffic.Team2.Servlets.PrintTicketServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrintTicketServlet</servlet-name>
+		<url-pattern>/printTicket</url-pattern>
+	</servlet-mapping>
 </web-app>
