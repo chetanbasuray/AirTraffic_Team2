@@ -66,19 +66,19 @@
   <div class="col-lg-6">
   <div class="panel panel-default">
     <div class="panel-body" style="background: url(https://media1.giphy.com/media/LeoQs1lygBc1W/200_s.gif);background-size: cover;">
-<form action="#">
+<form action="printTicket" target="_blank" method="post">
 
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">PNR</span>
-  <input type="text" class="form-control" placeholder="PNR" aria-describedby="basic-addon1">
+  <input type="text" name="pnr" class="form-control" placeholder="PNR" aria-describedby="basic-addon1">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">Last Name</span>
-  <input type="text" class="form-control" placeholder="Last Name" aria-describedby="basic-addon1">
+  <input type="text" name="lastname" class="form-control" placeholder="Last Name" aria-describedby="basic-addon1">
 </div>
 <br>
-<button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-print" aria-hidden="true"> Print </span></button>
+<button type="submit" class="btn btn-info"> <span class="glyphicon glyphicon-print" aria-hidden="true"> Print </span></button>
 </form>
 </div>
 </div>

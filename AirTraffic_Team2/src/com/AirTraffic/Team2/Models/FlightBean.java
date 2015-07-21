@@ -13,6 +13,19 @@ public class FlightBean {
 private String flight_Id;
 private Time flight_scheduled_departure_time;
 private Time flight_scheduled_arrival_time;
+private Date flight_date;
+/**
+ * @return the flight_date
+ */
+public Date getFlight_date() {
+  return flight_date;
+}
+/**
+ * @param flight_date the flight_date to set
+ */
+public void setFlight_date(Date flight_date) {
+  this.flight_date = flight_date;
+}
 private Timestamp flight_scheduled_departure_timestamp;
 private Timestamp flight_scheduled_arrival_timestamp;
 private int flight_first_class_cabin_luggage_limit;

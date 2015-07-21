@@ -31,12 +31,12 @@ public class TicketDAO extends AbstractDAO {
             + "where tpf.ticket_id=? and p.person_lname=? and p.person_id=tpf.passenger_id";
 
     String flightsInfoQuery =
-        "Select tpf.seatnumber, tpf.seat_class, "
-            + "f.flight_id, aj.airplanejournal_journeystartdate as scheduleddeparture, aj.airplanejournal_journeystartdate "
-            + "+ (aj.airplanejournal_totaljourneyduration * interval '1 minute') as scheduledarrival, fs.origin, fs.destination"
-            + " from ticketpassengerflight tpf, flight f, flightsegment fs , airplanejournal aj"
-            + " where tpf.ticket_id=? "
-            + "and f.flight_id=tpf.flight_id and f.flightsegment_id=fs.flightsegment_id and f.flight_id=aj.airplanejournal_flightid";
+        "Select tpf.seatnumber, tpf.seat_class, f.flight_id, "
+    +"fs.origin, fs.destination, tpf.ticket_journeydate,"
+    +" f.flight_scheduleddeparturetime, f.flight_scheduledarrivaltime from" +
+    " ticketpassengerflight tpf, flight f, flightsegment fs "
+    +"where tpf.ticket_id=?"
+    +" and f.flight_id=tpf.flight_id and f.flightsegment_id=fs.flightsegment_id";
 
 
     try (Connection connection = getConnection();) {
@@ -84,10 +84,11 @@ public class TicketDAO extends AbstractDAO {
               flight.setFlight_Id(resultSet2.getString("flight_id"));
               flight.setSeatNumber(resultSet2.getString("seatnumber"));
               flight.setSeatClass(resultSet2.getString("seat_class"));
-              flight.setFlight_scheduled_arrival_timestamp(resultSet2
-                  .getTimestamp("scheduledarrival"));
-              flight.setFlight_scheduled_departure_timestamp(resultSet2
-                  .getTimestamp("scheduleddeparture"));
+              flight.setFlight_date(resultSet2.getDate("ticket_journeydate"));
+              flight.setFlight_scheduled_arrival_time(resultSet2
+                  .getTime("flight_scheduledarrivaltime"));
+              flight.setFlight_scheduled_departure_time(resultSet2
+                  .getTime("flight_scheduleddeparturetime"));
               FlightSegmentBean flightSegment = new FlightSegmentBean();
               AirportBean originAirport = new AirportBean();
               originAirport.setAirport_iata(resultSet2.getString("origin"));
