@@ -39,9 +39,53 @@ $(document).ready(function() {
 		dateFormat : "yy-mm-dd"
 	});	
 });
+
+var adultcount = 1; //Initializing adultcount with 1 because atleast 1 adult should travel
+var childcount = 0;
+var infantcount = 0;
+
+function editcount(element){
+	
+	switch(element.id){
+	
+	case "Adultplus":  
+	adultcount++;
+	break;
+	
+	case "Adultminus":
+	if(adultcount > 1)
+		adultcount--;
+	break;
+	
+	case "Childplus":  
+	childcount++;
+	break;
+		
+	case "Childminus":
+	if(childcount > 0)
+		childcount--;
+	break;
+
+	case "Infantplus":  
+	infantcount++;
+	break;
+		
+	case "Infantminus":
+	if(infantcount > 0)
+		infantcount--;
+	break;
+
+	}
+	
+	$('#Adultcount').text(adultcount);
+	$('#Infantcount').text(infantcount);
+	$('#Childcount').text(childcount);
+		
+}
+
 </script>
 
-<title>Flights Information</title>
+<title>Search FLight</title>
 </head>
 <body>
 <div class="container">
@@ -66,7 +110,7 @@ $(document).ready(function() {
 					Flight </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./printTicket';">
 				<span class="glyphicon glyphicon-print" aria-hidden="true">
 					Print Ticket </span>
 			</button>
@@ -116,6 +160,9 @@ $(document).ready(function() {
 			Arrival Airport<select name="arrivalAirportDdl">		
 			<% for (int i = 0; i < airportIataList.size(); i++) {	 %>				
 				<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
+<%}
+				
+				%>
 			<%}%>			
 			</select> 
 				
@@ -124,9 +171,6 @@ $(document).ready(function() {
 				type="text" id="departureDate" name="departureDate"> <br> 
 			<label >Return Date</label> <input
 				type="text" id="arrivalDate" name="arrivalDate"> <br> 
-			
-				
-		<%}%>
 <table class = "table">
 <tr align="center"><td colspan="4">
   <div class="alert alert-default" role="alert">Please input the number of travellers according to their ages and the class of travel</div>
@@ -139,19 +183,19 @@ $(document).ready(function() {
   </tr>
   <tr>
   <td align = "center">
-	<button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-	<span class="label label-warning">1</span>
-    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+	<button class="btn btn-primary btn-sm" id="Adultminus" type="button" onclick="editcount(this)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+	<span id="Adultcount" name = "adultNumber" class="label label-warning">1</span>
+    <button class="btn btn-primary btn-sm" id="Adultplus" type="button" onclick="editcount(this)" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
   </td>
   <td align = "center">
-	<button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-	<span class="label label-warning">0</span>
-    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+	<button class="btn btn-primary btn-sm" id="Childminus" type="button" onclick="editcount(this)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+	<span id="Childcount" name = "childNumber" class="label label-warning">0</span>
+    <button class="btn btn-primary btn-sm" id="Childplus" type="button" onclick="editcount(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     </td>
     <td align = "center">
-    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-	<span class="label label-warning">0</span>
-    <button class="btn btn-primary btn-sm" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    <button class="btn btn-primary btn-sm" id="Infantminus" type="button" onclick="editcount(this)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+	<span id="Infantcount" name = "infantNumber" class="label label-warning">0</span>
+    <button class="btn btn-primary btn-sm" id="Infantplus" type="button" onclick="editcount(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     </td>
     <td align = "center" valign="bottom">
 <select>
@@ -170,6 +214,7 @@ $(document).ready(function() {
 	</div>
 </div>
 </div>
+<% if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")==""))){ %>
 <div class="container">
 <div class="alert alert-info" role="alert">
 <table width="600" height="300" align=center cellspacing=0 border="0"
@@ -230,6 +275,10 @@ $(document).ready(function() {
 									<%
 										}
 									session.setAttribute("flight", flightList);
+									session.setAttribute("adultCount", request.getAttribute("adultNumber"));
+									session.setAttribute("childCount", request.getAttribute("childNumber"));
+									session.setAttribute("infantCount", request.getAttribute("infantNumber"));
+								
 									}
 									
 								}								
@@ -245,5 +294,6 @@ $(document).ready(function() {
 	</div>
 	</div>
 	</div>
+	<% } %>
 </body>
 </html>
