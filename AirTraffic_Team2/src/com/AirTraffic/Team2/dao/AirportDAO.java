@@ -28,9 +28,9 @@ public class AirportDAO extends AbstractDAO{
 //		java.util.Date date = new java.util.Date();
 //		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		
-		String query = "select Distinct(airport_iata) from airport order by airport_iata asc;";
+		String query = "select airport_iata from airport order by airport_iata";
 		
-		List<AirportBean> airportIataList =new ArrayList<AirportBean>();		
+		List<AirportBean> airportIataList = new ArrayList<AirportBean>();		
 		
 
 		try (Connection connection = getConnection();
