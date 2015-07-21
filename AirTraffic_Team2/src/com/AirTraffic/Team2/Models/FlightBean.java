@@ -16,7 +16,51 @@ private Time flight_scheduled_arrival_time;
 private Timestamp flight_scheduled_departure_timestamp;
 private Timestamp flight_scheduled_arrival_timestamp;
 private int flight_first_class_cabin_luggage_limit;
+private String seatNumber;
+private String seatClass;
 
+<<<<<<< HEAD
+=======
+
+/**
+ * @return the seatNumber
+ */
+public String getSeatNumber() {
+  return seatNumber;
+}
+/**
+ * @param seatNumber the seatNumber to set
+ */
+public void setSeatNumber(String seatNumber) {
+  this.seatNumber = seatNumber;
+}
+/**
+ * @return the seatClass
+ */
+public String getSeatClass() {
+  return seatClass;
+}
+/**
+ * @param seatClass the seatClass to set
+ */
+public void setSeatClass(String seatClass) {
+  this.seatClass = seatClass;
+}
+public Timestamp getFlight_scheduled_departure_timestamp() {
+	return flight_scheduled_departure_timestamp;
+}
+public void setFlight_scheduled_departure_timestamp(
+		Timestamp flight_scheduled_departure_timestamp) {
+	this.flight_scheduled_departure_timestamp = flight_scheduled_departure_timestamp;
+}
+public Timestamp getFlight_scheduled_arrival_timestamp() {
+	return flight_scheduled_arrival_timestamp;
+}
+public void setFlight_scheduled_arrival_timestamp(
+		Timestamp flight_scheduled_arrival_timestamp) {
+	this.flight_scheduled_arrival_timestamp = flight_scheduled_arrival_timestamp;
+}
+>>>>>>> 028201e187d3f8b875ccfa5cc317e476dae78c22
 private double flight_first_class_price;
 private double flight_business_class_price;
 private double flight_economy_class_price;

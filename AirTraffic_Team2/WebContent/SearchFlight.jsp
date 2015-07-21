@@ -85,7 +85,7 @@ function editcount(element){
 
 </script>
 
-<title>Flights Information</title>
+<title>Search FLight</title>
 </head>
 <body>
 <div class="container">
@@ -110,7 +110,7 @@ function editcount(element){
 					Flight </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./printTicket';">
 				<span class="glyphicon glyphicon-print" aria-hidden="true">
 					Print Ticket </span>
 			</button>
