@@ -80,7 +80,7 @@
 					Cancel Booking </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./addFlights';">
 				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true">
 					Add Flights </span>
 			</button>
