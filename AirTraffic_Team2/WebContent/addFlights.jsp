@@ -42,7 +42,7 @@
 		if(deptAirport.equals(arrAirport))
 			{
 			document.getElementById("addFlightbtn").disabled = true;
-			alert("Please select different Departure & Arrival Airports");
+			alert("Please select different Departure and Arrival Airports");
 			}
 	}
 </script>
