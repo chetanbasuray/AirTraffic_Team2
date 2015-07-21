@@ -51,38 +51,6 @@
 </head>
 <body>
 	<div class="container">
-		<div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-plane" aria-hidden="true">
-						Book Flight </span>
-				</button>
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-tasks" aria-hidden="true">
-						Manage Booking </span>
-				</button>
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-scissors" aria-hidden="true">
-						Cancel Booking </span>
-				</button>
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-king" aria-hidden="true">
-						Admin Privileges </span>
-				</button>
-			</div>
-			<div class="btn-group" style="float: right">
-				<button type="button" class="btn btn-danger" class="active">
-					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-					Sign Out
-				</button>
-				<button type="button" class="btn btn-danger" class="active">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					Log In
-				</button>
-			</div>
-		</div>
-		<br>
-
 		<div class="btn-group">
 			<button type="button" class="btn btn-success" class="active"
 				onclick="location.href='./searchFlight';">
@@ -90,12 +58,12 @@
 					Flight </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./printTicket';">
 				<span class="glyphicon glyphicon-print" aria-hidden="true">
 					Print Ticket </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./cancelBooking';">
 				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
 					Cancel Booking </span>
 			</button>

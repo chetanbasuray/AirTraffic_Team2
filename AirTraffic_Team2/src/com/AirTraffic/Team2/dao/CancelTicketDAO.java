@@ -6,16 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CancelTicketDAO extends AbstractDAO {
-	public static void main(String args[]){
-		CancelTicketDAO da=new CancelTicketDAO();
-		try {
-			da.cancelTicket("123");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	boolean cancelTicket(String ticket_pnr) throws Exception{
+	public boolean cancelTicket(String ticket_pnr) throws Exception{
 	    String findPNR= "select * from ticket where ticket_pnr=?";
 	    String ticketCancelQuery =
 	    		"update ticket set ticket_bookingstatus_id=1 where ticket_pnr=?";
@@ -45,8 +36,8 @@ public class CancelTicketDAO extends AbstractDAO {
 	      }
 	      return false;
 }
-}
 
+}
 
 
 

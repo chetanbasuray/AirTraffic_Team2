@@ -27,7 +27,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<title>Assign Runway</title>
+<title>Cancel Booking</title>
 </head>
 <body>
 	<div class="container">
@@ -63,9 +63,9 @@
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body"
-				style="background: url(https://upload.wikimedia.org/wikipedia/commons/e/e1/Landing_at_Zurich_International_Airport.jpg); background-size: cover;">
+				style="background: url(http://www.airarabia.com/sites/airarabia/files/styles/medium_coupon/public/Cancel_Flight_360X170_pxl.jpg?itok=Y8y671G-); background-size: cover;">
 
-				<form role="form" method="post" action="./assignRunway"
+				<form role="form" method="post" action="./cancelBooking"
 					accept-charset="UTF-8">
 					<%
 					  if (request.getAttribute("error") != null) {
@@ -90,55 +90,27 @@
 						<%=request.getAttribute("success")%></div>
 					<%
 					  }
-					  List<RunwayBean> availRunways = (ArrayList<RunwayBean>) request.getAttribute("runways");
-					  List<FlightBean> incomingFlights = (ArrayList<FlightBean>) request.getAttribute("flights");
 					%>
 
 
 					<div style="width: 40%; padding: 50px;">
 
 						<div class="form-group">
-							<input type="text" id="empId" name="empId" class="form-control"
-								value="1">
+							<span class="badge">Please Enter Your PNR</span>
+							<input type="text" id="ticketPNR" name="ticketPNR" class="form-control">
 						</div>
-
-						<div class="form-group col-md-5">
-							<label for="incomingFlight" style="color: white">Select
-								incoming Flight:</label> <select class="form-control"
-								id="incomingFlight" name="incomingFlight" size="5">
-								<%
-								  for (FlightBean flight : incomingFlights) {
-								%>
-								<option value="<%=flight.getFlight_Id()%>"><%=flight.getFlight_Id()%></option>
-								<%
-								  }
-								%>
-							</select>
+						<div class="form-group">
+						<button type="button" class="btn btn-info"
+				onclick="location.href='./cancelBooking';">
+				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
+					Cancel Booking </span>
+			</button>
 						</div>
-						<div class="col-md-2"></div>
-						<div class="form-group col-md-5">
-							<label for="availableRunway" style="color: white">Select
-								available runway:</label> <select class="form-control"
-								id="availableRunway" name="availableRunway" size="5">
-
-								<%
-								  for (RunwayBean runway : availRunways) {
-								%>
-								<option value="<%=runway.getRunway_id()%>"><%=runway.getRunway_id()%></option>
-								<%
-								  }
-								%>
-							</select>
-						</div>
-
-						<button type="submit" class="btn btn-info">
-							<span class="glyphicon glyphicon-ok-circle" aria-hidden="true">
-								Assign </span>
-						</button>
 				</form>
 			</div>
 
 		</div>
+	</div>
 	</div>
 	</div>
 </body>
