@@ -97,8 +97,7 @@ function yesnoCheck() {
         State  <input type='text' id='custState' name='custState'>
         Zipcode <input type='text' id='custZipcode' name='custZipcode'>
         Country <input type='text' id='custCountry' name='custCountry'>
-        Submit <input type='submit' id='custdetails' name='custdetails'>
-        
+                
     </div>
 		
 		<input type="submit" value="View My Details/Add My Details">
