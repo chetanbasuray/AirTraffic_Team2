@@ -15,6 +15,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -22,6 +25,8 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
+
+
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet" type="text/css" />
@@ -29,7 +34,9 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script type="text/javascript">
+
+<script src="Web Pages/gen_validatorv4.js"> </script>
+<script type="text/javascript"> 
 
 $(document).ready(function() {
 	$("#departureDate").datepicker({
@@ -84,6 +91,26 @@ function editcount(element){
 }
 
 </script>
+<script>
+$(document).ready(function(){  
+  $("select").change(function() {   
+    $("select").not(this).find("option[value="+ $(this).val() + "]").attr('disabled', true);
+  }); 
+}); 
+</script>
+
+<script>
+function startEndDateValidator(){    
+	var startDate = document.getElementById("departureDate").value;
+	var endDate = document.getElementById("arrivalDate").value;
+    if ((Date.parse(startDate,"yy-mm-dd") >= Date.parse(endDate,"yy-mm-dd"))) {
+    	
+        alert("Return date should be greater than Departure date");
+        document.getElementById("arrivalDate").value = "";
+    }
+}
+</script>
+
 
 <title>Search FLight</title>
 </head>
@@ -122,7 +149,7 @@ function editcount(element){
 <div class="panel panel-default">
   <div class="panel-body" style="background: url(http://nyulocal.com/wp-content/uploads/2013/10/The-plane-flying-at-sunset-airliner-photography_1920x1080.jpg);background-size: cover;">
 
-	<form method=post action="searchFlight">
+	<form method=post id="searchFlightForm" action="searchFlight">
 
 		
 	<%
@@ -152,11 +179,15 @@ function editcount(element){
 			<%}%>			
 			</select> 
 				
-			<br> <br> 
+			<br> <br>
+			<div id='searchFlightForm_departureDate_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
 			<label >Departure Date</label> <input
-				type="text" id="departureDate" name="departureDate"> <br> 
+				type="text" id="departureDate"  name="departureDate"> <br> 
+			<div id='searchFlightForm_arrivalDate_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
 			<label >Return Date</label> <input
-				type="text" id="arrivalDate" name="arrivalDate"> <br> 
+				type="text" id="arrivalDate" name="arrivalDate" onchange="startEndDateValidator()">  <br> 
 <table class = "table">
 <tr align="center"><td colspan="4">
   <div class="alert alert-default" role="alert">Please input the number of travellers according to their ages and the class of travel</div>
@@ -281,5 +312,17 @@ function editcount(element){
 	</div>
 	</div>
 	<% } %>
+<script language="JavaScript" type="text/javascript">
+  var frmvalidator  = new Validator("searchFlightForm");
+  frmvalidator.EnableOnPageErrorDisplay();
+  frmvalidator.EnableMsgsTogether();
+  
+  frmvalidator.addValidation("departureDate","req","Please enter departure date");
+  frmvalidator.addValidation("departureDate","maxlen=20","For departureDate, Max length is 20"); 
+  
+  frmvalidator.addValidation("arrivalDate","req","Please enter arrival date");
+  frmvalidator.addValidation("arrivalDate","maxlen=20","For arrivalDate, Max length is 20"); 
+   
+</script>
 </body>
 </html>
