@@ -36,7 +36,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
 
-<script type="text/javascript">
+<script type="text/javascript"> 
 
 $(document).ready(function() {
 	$("#departureDate").datepicker({
