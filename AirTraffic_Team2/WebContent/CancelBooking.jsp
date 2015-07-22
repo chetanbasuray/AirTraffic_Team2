@@ -27,7 +27,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<title>Assign Runway</title>
+<title>Cancel Booking</title>
 </head>
 <body>
 	<div class="container">
@@ -63,82 +63,46 @@
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body"
-				style="background: url(https://upload.wikimedia.org/wikipedia/commons/e/e1/Landing_at_Zurich_International_Airport.jpg); background-size: cover;">
+				style="background: url(https://lh3.googleusercontent.com/proxy/mvLixCPJj8P7mAONpA43N1iasEkd-iTnz957KlREkjoIHnT52rSn55GTdpLSYh713ITk3V-HWmdxH24K9nuBdCjpR7E3GymiQhKqJolJeYqLMYUMITtfTtsOvRzsdj_wX8GmTUmTEw=w426-h239-p); background-size: cover;">
 
-				<form role="form" method="post" action="./assignRunway"
+				<form role="form" method="post" action="cancelBooking" onSubmit="alert('Ticket has been Cancelled');
 					accept-charset="UTF-8">
 					<%
-					  if (request.getAttribute("error") != null) {
+						if (request.getAttribute("error") != null) {
 					%>
-					<div class="alert alert-warning alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<%=request.getAttribute("error")%></div>
-
+					<h3><label>PNR doesnot exist or the ticket has been cancelled already</label></h3>
+					<!-- <%=request.getAttribute("error")%> -->
 					<%
-					  }
-					  if (request.getAttribute("success") != null) {
+						} else {
+							if(request.getAttribute("returnmsg")!=null && request.getAttribute("returnmsg").equals("success")){
 					%>
-
-					<div class="alert alert-warning alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<%=request.getAttribute("success")%></div>
-					<%
-					  }
-					  List<RunwayBean> availRunways = (ArrayList<RunwayBean>) request.getAttribute("runways");
-					  List<FlightBean> incomingFlights = (ArrayList<FlightBean>) request.getAttribute("flights");
+					<h3><label>Ticket has been cancelled</label> </h3><br>
+					<% 
+						}									
+							if(request.getAttribute("returnmsg")!=null && request.getAttribute("returnmsg").equals("false")){
+								%>
+								<h3><label>PNR doesnot exist or the ticket has been cancelled already</label></h3><br>
+								<% 
+							}
+						}
 					%>
 
 
 					<div style="width: 40%; padding: 50px;">
 
 						<div class="form-group">
-							<input type="text" id="empId" name="empId" class="form-control"
-								value="1">
+							<span class="badge">Please Enter Your PNR</span>
+							<input type="text" id="ticketPNR" name="ticketPNR" class="form-control">
 						</div>
-
-						<div class="form-group col-md-5">
-							<label for="incomingFlight" style="color: white">Select
-								incoming Flight:</label> <select class="form-control"
-								id="incomingFlight" name="incomingFlight" size="5">
-								<%
-								  for (FlightBean flight : incomingFlights) {
-								%>
-								<option value="<%=flight.getFlight_Id()%>"><%=flight.getFlight_Id()%></option>
-								<%
-								  }
-								%>
-							</select>
+						<div class="form-group">
+						<input type="submit" class="btn btn-info" value="Cancel Booking" style="font-face: 'Comic Sans MS'; font-size: larger; color: black;"  >
+			</button>
 						</div>
-						<div class="col-md-2"></div>
-						<div class="form-group col-md-5">
-							<label for="availableRunway" style="color: white">Select
-								available runway:</label> <select class="form-control"
-								id="availableRunway" name="availableRunway" size="5">
-
-								<%
-								  for (RunwayBean runway : availRunways) {
-								%>
-								<option value="<%=runway.getRunway_id()%>"><%=runway.getRunway_id()%></option>
-								<%
-								  }
-								%>
-							</select>
-						</div>
-
-						<button type="submit" class="btn btn-info">
-							<span class="glyphicon glyphicon-ok-circle" aria-hidden="true">
-								Assign </span>
-						</button>
 				</form>
 			</div>
 
 		</div>
+	</div>
 	</div>
 	</div>
 </body>

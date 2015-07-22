@@ -17,21 +17,6 @@
 <body>
 <div class = "pageheader">
 <div class="container">
-<div>
-<div class="btn-group">
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-home" aria-hidden="true"> Home </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-plane" aria-hidden="true"> Book Flight </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"> Manage Booking </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-scissors" aria-hidden="true"> Cancel Booking </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-king" aria-hidden="true"> Admin Privileges </span></button>
-  </div>
-  <div class="btn-group" style="float:right">
-  <button type="button" class="btn btn-danger" class="active">  <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign Out </button>
-<button type="button" class="btn btn-danger" class="active">  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log In</button>
-</div>
-</div>
-<br>
-
 <div class="btn-group">
   <button type="button" class="btn btn-success" class="active"
 				onclick="location.href='./searchFlight';">
@@ -44,12 +29,12 @@
 					Print Ticket </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./cancelBooking';">
 				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
 					Cancel Booking </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./addFlights';">
 				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true">
 					Add Flights </span>
 			</button>
@@ -66,19 +51,19 @@
   <div class="col-lg-6">
   <div class="panel panel-default">
     <div class="panel-body" style="background: url(https://media1.giphy.com/media/LeoQs1lygBc1W/200_s.gif);background-size: cover;">
-<form action="#">
+<form action="printTicket" target="_blank" method="post">
 
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">PNR</span>
-  <input type="text" class="form-control" placeholder="PNR" aria-describedby="basic-addon1">
+  <input type="text" name="pnr" class="form-control" placeholder="PNR" aria-describedby="basic-addon1">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">Last Name</span>
-  <input type="text" class="form-control" placeholder="Last Name" aria-describedby="basic-addon1">
+  <input type="text" name="lastname" class="form-control" placeholder="Last Name" aria-describedby="basic-addon1">
 </div>
 <br>
-<button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-print" aria-hidden="true"> Print </span></button>
+<button type="submit" class="btn btn-info"> <span class="glyphicon glyphicon-print" aria-hidden="true"> Print </span></button>
 </form>
 </div>
 </div>

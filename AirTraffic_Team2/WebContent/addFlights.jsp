@@ -32,57 +32,36 @@
 	rel="stylesheet" type="text/css" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script src="Web Pages/gen_validatorv4.js"> </script>
+	
 <script type="text/javascript">
 	function checkAirport(){
-		var deptAirport = document.getElementById("departureAirport").value;
-		var arrAirport = document.getElementById("arrivalAirport").value;
-		alert("Please select different Departure & Arrival Airports");
-		if(deptAirport.equals(arrAirport))
+		var deptAirport = document.getElementById("departureAirport");
+		var arrAirport = document.getElementById("arrivalAirport");
+		
+		
+		/* alert("Please select different Departure & Arrival Airports"); */
+		
+		var deptAirportValue = deptAirport.options[deptAirport.selectedIndex].value;
+        var arrAirportValue = arrAirport.options[arrAirport.selectedIndex].value;        
+        
+		if(deptAirportValue == arrAirportValue)
 			{
 			document.getElementById("addFlightbtn").disabled = true;
-			alert("Please select different Departure and Arrival Airports");
+			alert("Please select different Departure & Arrival Airports");
 			}
 	}
 </script>
+	
+
+
+
 
 <title>Add Flights</title>
 </head>
 <body>
 	<div class="container">
-		<div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-plane" aria-hidden="true">
-						Book Flight </span>
-				</button>
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-tasks" aria-hidden="true">
-						Manage Booking </span>
-				</button>
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-scissors" aria-hidden="true">
-						Cancel Booking </span>
-				</button>
-				<button type="button" class="btn btn-success">
-					<span class="glyphicon glyphicon-king" aria-hidden="true">
-						Admin Privileges </span>
-				</button>
-			</div>
-			<div class="btn-group" style="float: right">
-				<button type="button" class="btn btn-danger" class="active">
-					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-					Sign Out
-				</button>
-				<button type="button" class="btn btn-danger" class="active">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					Log In
-				</button>
-			</div>
-		</div>
-		<br>
-
 		<div class="btn-group">
 			<button type="button" class="btn btn-success" class="active"
 				onclick="location.href='./searchFlight';">
@@ -90,12 +69,12 @@
 					Flight </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./printTicket';">
 				<span class="glyphicon glyphicon-print" aria-hidden="true">
 					Print Ticket </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./cancelBooking';">
 				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
 					Cancel Booking </span>
 			</button>
@@ -117,7 +96,7 @@
 			<div class="panel-body"
 				style="background: url(http://www.aldogroup.com/img/DREAMS%20TAKE%20FLIGHT/BANNER_DREAMS-TAKE-FLIGHT.jpg); background-size: cover;">
 
-				<form method=post action="addFlights">
+				<form method=post id="addFlightForm" action="addFlights">
 
 
 					<%
@@ -147,18 +126,31 @@
 						Departure Airport
 						</td>
 						<td>
+<<<<<<< HEAD
 						<select name="departureAirport" onChange="checkAirport()">
+=======
+						<select name="departureAirport" id="departureAirport" onchange="checkAirport()">
+>>>>>>> 7664741d4e75458e0b8b7faa3311aab976b91798
 							<%
 								for (int i = 0; i < airportIataList.size(); i++) {
 							%>
 							<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
 							<%
 								}
-							%></td></tr><tr><td>
-						</select> Arrival Airport
+							%>
+						</select> 
+							</td>
+						</tr><tr><td>
+						
+						
+						Arrival Airport
 						</td>
 						<td>
+<<<<<<< HEAD
 						<select name="arrivalAirport"  onChange="checkAirport()">
+=======
+						<select name="arrivalAirport" id="arrivalAirport" onchange="checkAirport()">
+>>>>>>> 7664741d4e75458e0b8b7faa3311aab976b91798
 							<%
 								for (int i = airportIataList.size() - 1; i >= 0; i--) {
 							%>
@@ -188,7 +180,9 @@
 						<tr><td>						
 						Flight Id
 						</td><td>
-						<input type="text" placeholder="Enter Flight Id" name="flightId"></td></tr>
+						<div id='addFlightForm_flightId_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
+						<input type="text" placeholder="Enter Flight Id" name="flightId" id="flightId"></td></tr>
 						<tr><td> 
 						Scheduled Departure Time </td><td><select name="scheduledDepartureHour"> 
 							<%
@@ -301,6 +295,15 @@
 			</div>
 		</div>
 	</div>
+<script language="JavaScript" type="text/javascript">
+  var frmvalidator  = new Validator("addFlightForm");
+  frmvalidator.EnableOnPageErrorDisplay();
+  frmvalidator.EnableMsgsTogether();
+  
+  frmvalidator.addValidation("flightId","req","Please enter flight id");
+  frmvalidator.addValidation("flightId","maxlen=20","For flightId, Max length is 20"); 
+   
+</script>
 
 </body>
 </html>

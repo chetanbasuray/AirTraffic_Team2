@@ -6,12 +6,12 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.AirTraffic.Team2.Servlets.BookFlightServlet"%>
-<%@page import="com.itextpdf.text.Document" %>
-<%@page import="com.itextpdf.text.DocumentException" %>
-<%@page import="com.itextpdf.text.pdf.PdfWriter" %>
-<%@page import="com.itextpdf.text.Paragraph" %>
-<%@page import="com.itextpdf.text.Element" %>
-<%@page import="java.io.FileOutputStream" %>
+<%@page import="com.itextpdf.text.Document"%>
+<%@page import="com.itextpdf.text.DocumentException"%>
+<%@page import="com.itextpdf.text.pdf.PdfWriter"%>
+<%@page import="com.itextpdf.text.Paragraph"%>
+<%@page import="com.itextpdf.text.Element"%>
+<%@page import="java.io.FileOutputStream"%>
 
 
 <jsp:useBean id="booking" scope="request"
@@ -97,6 +97,8 @@ function yesnoCheck() {
         State  <input type='text' id='custState' name='custState'>
         Zipcode <input type='text' id='custZipcode' name='custZipcode'>
         Country <input type='text' id='custCountry' name='custCountry'>
+        Submit <input type='submit' id='custdetails' name='custdetails'>
+        
     </div>
 		
 		<input type="submit" value="View My Details/Add My Details">
@@ -198,6 +200,7 @@ function yesnoCheck() {
         Customer ID<input type='text' id='existingCustID' name='existingCustomerID'><br> 
                      
 		<h1 align="center">Customer Details</h1>
+
 		<table width="600" height="300" align=center cellspacing=0 border="0"
 			cellpadding=0>
 			<tr>
@@ -286,66 +289,62 @@ function yesnoCheck() {
 		</form><br>
 
 
-		<table width="600" height="300" align=center cellspacing=0 border="0"
-			cellpadding=0>
-			<tr>
-				<td>
-					<fieldset id="fieldhead">
-						<legend>Flight Information</legend>
-						<BR>
+	<table width="600" height="300" align=center cellspacing=0 border="0"
+		cellpadding=0>
+		<tr>
+			<td>
+				<fieldset id="fieldhead">
+					<legend>Flight Information</legend>
+					<BR>
 
-						<table align=center cellspacing=1 cellpadding=3>
+					<table align=center cellspacing=1 cellpadding=3>
 
-							<div align="center">
-								<table border="1" cellpadding="5">
-									<caption>
-										<h2>Flight Details</h2>
-									</caption>
-									<%
-										if (request.getAttribute("error") != null) {
-									%>
-									<h3>No Flight Found</h3>
-									<%=request.getAttribute("error")%>
-									<%
-										} 
-									else {
-									
-									%>
-									<tr>
-										<th>Flight Name</th>
-										<th>Departure Time</th>
-										<th>Arrival Time</th>
-										<th>Departure Airport</th>
-										<th>Arrival Airport</th>
-										<th>Departure Date</th>
-										<th>Arrival Date</th>
-									</tr>
-									<%
-									
-										List<FlightBean> flightList = (List<FlightBean> )session.getAttribute("flight");
+						<div align="center">
+							<table border="1" cellpadding="5">
+								<caption>
+									<h2>Flight Details</h2>
+								</caption>
+								<%
+								  if (request.getAttribute("error") != null) {
+								%>
+								<h3>No Flight Found</h3>
+								<%=request.getAttribute("error")%>
+								<%
+								  } else {
+								%>
+								<tr>
+									<th>Flight Name</th>
+									<th>Departure Time</th>
+									<th>Arrival Time</th>
+									<th>Departure Airport</th>
+									<th>Arrival Airport</th>
+									<th>Departure Date</th>
+									<th>Arrival Date</th>
+									<th>Flight Price</th>
+									<th>Seat Class</th>
+								</tr>
+								<%
+								  List<FlightBean> flightList = (List<FlightBean>) session.getAttribute("flight");
 
-												for (int i = 0; i < flightList.size(); i++) {
-									%>
-									<tr>
+								    for (int i = 0; i < flightList.size(); i++) {
+								%>
+								<tr>
 
-										<td><%=flightList.get(i).getFlight_Id()%></td>
-										<td><%=flightList.get(i)
-								.getFlight_scheduled_departure_time()%></td>
-										<td><%=flightList.get(i)
-								.getFlight_scheduled_arrival_time()%></td>
-										<td><%=flightList.get(i).getFlightSegmentBean()
-								.getOriginAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getFlightSegmentBean()
-								.getDestinationAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getDepartureDate()%></td>
-										<td><%=flightList.get(i).getArrivalDate()%></td>
-
-									</tr>
-									<%
-										}
-									}
-									%>
-									<%-- <%								
+									<td><%=flightList.get(i).getFlight_Id()%></td>
+									<td><%=flightList.get(i).getFlight_scheduled_departure_time()%></td>
+									<td><%=flightList.get(i).getFlight_scheduled_arrival_time()%></td>
+									<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
+									<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport()
+              .getAirport_iata()%></td>
+									<td><%=flightList.get(i).getDepartureDate()%></td>
+									<td><%=flightList.get(i).getArrivalDate()%></td>
+<td><%=flightList.get(i).getFlight_price()%></td>
+<td><%=flightList.get(i).getSeatClass()%></td>
+								</tr>
+								<%
+								  }
+								%>
+								<%-- <%								
 									
 									  Document document = new Document();
 									  PdfWriter.getInstance(document, new FileOutputStream("//home//adnan//Downloads//testpdf1.pdf"));
@@ -366,11 +365,70 @@ function yesnoCheck() {
 		</table>
 		<br>
      
-     	<form>
-             <button type="submit" class="btn btn-info" name="addCustomerbtn">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true">
-								Proceed to Booking </span>
-						</button>
+  
+							</table>
+						</div>
+
+					</table>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	</div>
+
+	<%
+	  if (request.getAttribute("personDetails") != null
+	        && !request.getAttribute("personDetails").equals("")) {
+	      List<BookingBean> bookPersonDetail =
+	          (ArrayList<BookingBean>) request.getAttribute("personDetails");
+	%>
+	<form role="form" action="bookTicket" method="post">
+		<input type="text" style="display: none"
+			value="<%=flightList.get(0).getFlight_Id()%>" name="flightId" />
+			<input type="text" style="display: none"
+			value="<%=flightList.get(0).getSeatClass()%>" name="seatClass" />
+			<input type="text" style="display: none"
+			value="<%=flightList.get(0).getFlight_price()%>" name="flightPrice" />
+			<input type="text" style="display: none"
+			value="<%=flightList.get(0).getDepartureDate().toString()%>" name="journeyDate" />
+			<input
+			type="text" style="display: none"
+			value="<%=bookPersonDetail.get(0).getPersonBean().getPerson_id()%>"
+			name="personId">
+			<input
+			type="text" style="display: none"
+			value="<%=bookPersonDetail.get(0).getPersonBean().getPerson_lname()%>"
+			name="lastname">
+			<div class="form-group">
+            <label for="paymentMethod">Choose your payment method</label>
+
+            <select class="form-control" name="paymentMethod">
+				<!-- TODO populate universities from database -->
+              <option value="1" selected>CREDIT CARD</option>
+              <option value="2" >DEBIT CARD</option>
+              <option value="4" >NET BANKING</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="currency">Choose your type of currency</label>
+
+            <select class="form-control" name="currency">
+				<!-- TODO populate universities from database -->
+              <option value="2" selected>EUR</option>
+              <option value="1" >USD</option>
+               <option value="3" >GBP</option>
+              <option value="4" >INR</option>
+            </select>
+          </div>
+			 <input type="submit" value="Book">
+		<%
+		  }
+		%>
 	</form>
+	<%
+	  }
+	%>
 </body>
 </html>

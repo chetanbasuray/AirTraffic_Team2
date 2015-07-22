@@ -13,5 +13,6 @@ public abstract class AbstractDAO {
 			e.printStackTrace();
 		};
         return DriverManager.getConnection("jdbc:postgresql:Airtraffic_Team2", "postgres", "postgre123");
+
     }
 }

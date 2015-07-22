@@ -15,6 +15,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -22,6 +25,8 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
+
+
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet" type="text/css" />
@@ -29,14 +34,18 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script type="text/javascript">
+
+<script src="Web Pages/gen_validatorv4.js"> </script>
+<script type="text/javascript"> 
 
 $(document).ready(function() {
 	$("#departureDate").datepicker({
 		dateFormat : "yy-mm-dd"
+		,minDate: 0
 	});		
 	$("#arrivalDate").datepicker({
-		dateFormat : "yy-mm-dd"
+		dateFormat : "yy-mm-dd",
+		minDate: 0
 	});	
 });
 
@@ -84,25 +93,31 @@ function editcount(element){
 }
 
 </script>
+<script>
+$(document).ready(function(){  
+  $("select").change(function() {   
+    $("select").not(this).find("option[value="+ $(this).val() + "]").attr('disabled', true);
+  }); 
+}); 
+</script>
+
+<script>
+function startEndDateValidator(){    
+	var startDate = document.getElementById("departureDate").value;
+	var endDate = document.getElementById("arrivalDate").value;
+    if ((Date.parse(startDate,"yy-mm-dd") >= Date.parse(endDate,"yy-mm-dd"))) {
+    	
+        alert("Return date should be greater than Departure date");
+        document.getElementById("arrivalDate").value = "";
+    }
+}
+</script>
+
 
 <title>Search FLight</title>
 </head>
 <body>
 <div class="container">
-<div>
-<div class="btn-group">
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-plane" aria-hidden="true"> Book Flight </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"> Manage Booking </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-scissors" aria-hidden="true"> Cancel Booking </span></button>
-  <button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-king" aria-hidden="true"> Admin Privileges </span></button>
-  </div>
-  <div class="btn-group" style="float:right">
-  <button type="button" class="btn btn-danger" class="active">  <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign Out </button>
-<button type="button" class="btn btn-danger" class="active">  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log In</button>
-</div>
-</div>
-<br>
-
 <div class="btn-group">
 			<button type="button" class="btn btn-warning" class="active"
 				onclick="location.href='./searchFlight';">
@@ -115,12 +130,12 @@ function editcount(element){
 					Print Ticket </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./cancelBooking';">
 				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
 					Cancel Booking </span>
 			</button>
 			<button type="button" class="btn btn-success"
-				onclick="location.href='./#';">
+				onclick="location.href='./addFlights';">
 				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true">
 					Add Flights </span>
 			</button>
@@ -136,7 +151,7 @@ function editcount(element){
 <div class="panel panel-default">
   <div class="panel-body" style="background: url(http://nyulocal.com/wp-content/uploads/2013/10/The-plane-flying-at-sunset-airliner-photography_1920x1080.jpg);background-size: cover;">
 
-	<form method=post action="searchFlight">
+	<form method=post id="searchFlightForm" action="searchFlight">
 
 		
 	<%
@@ -166,11 +181,15 @@ function editcount(element){
 			<%}%>			
 			</select> 
 				
-			<br> <br> 
+			<br> <br>
+			<div id='searchFlightForm_departureDate_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
 			<label >Departure Date</label> <input
-				type="text" id="departureDate" name="departureDate"> <br> 
+				type="text" id="departureDate"  name="departureDate"> <br> 
+			<div id='searchFlightForm_arrivalDate_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
 			<label >Return Date</label> <input
-				type="text" id="arrivalDate" name="arrivalDate"> <br> 
+				type="text" id="arrivalDate" name="arrivalDate" onchange="startEndDateValidator()">  <br> 
 <table class = "table">
 <tr align="center"><td colspan="4">
   <div class="alert alert-default" role="alert">Please input the number of travellers according to their ages and the class of travel</div>
@@ -198,7 +217,7 @@ function editcount(element){
     <button class="btn btn-primary btn-sm" id="Infantplus" type="button" onclick="editcount(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     </td>
     <td align = "center" valign="bottom">
-<select>
+<select name="class">
   <option value="economy">Economy</option>
   <option value="business">Business</option>
   <option value="first">First Class</option>
@@ -294,5 +313,17 @@ function editcount(element){
 	</div>
 	</div>
 	<% } %>
+<script language="JavaScript" type="text/javascript">
+  var frmvalidator  = new Validator("searchFlightForm"); 
+  frmvalidator.EnableOnPageErrorDisplay();
+  frmvalidator.EnableMsgsTogether();
+  
+  frmvalidator.addValidation("departureDate","req","Please enter departure date");
+  frmvalidator.addValidation("departureDate","maxlen=20","For departureDate, Max length is 20"); 
+  
+  frmvalidator.addValidation("arrivalDate","req","Please enter arrival date");
+  frmvalidator.addValidation("arrivalDate","maxlen=20","For arrivalDate, Max length is 20"); 
+   
+</script>
 </body>
 </html>

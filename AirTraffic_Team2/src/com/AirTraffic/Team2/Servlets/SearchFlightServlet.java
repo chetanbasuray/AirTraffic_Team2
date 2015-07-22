@@ -44,13 +44,14 @@ public class SearchFlightServlet extends HttpServlet {
 			    String arrivalAirport = request.getParameter("arrivalAirportDdl").toString();
 			    String departureDate = request.getParameter("departureDate").toString();
 			    String arrivalDate = request.getParameter("arrivalDate").toString();
+			    String seatClass = request.getParameter("class").toString();
 //			    int adultNo = Integer.valueOf(request.getParameter("adultNumber"));
 //			    int childNo = Integer.valueOf(request.getParameter("childNumber"));
 //			    int infantNo = Integer.valueOf(request.getParameter("infantNumber"));
 			    			    
 				FlightDAO flightDAO = new FlightDAO(); 		
 				
-				List<FlightBean> flightList = flightDAO.getFlights(departureAirport, arrivalAirport, departureDate, arrivalDate);			
+				List<FlightBean> flightList = flightDAO.getFlights(departureAirport, arrivalAirport, departureDate, arrivalDate, seatClass);			
 			    
 				AirportDAO airportDAO = new AirportDAO();			
 				List<AirportBean> airportIataList = airportDAO.getAirportIata();

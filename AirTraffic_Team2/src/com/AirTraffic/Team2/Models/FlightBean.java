@@ -13,11 +13,76 @@ public class FlightBean {
 private String flight_Id;
 private Time flight_scheduled_departure_time;
 private Time flight_scheduled_arrival_time;
+private Date flight_date;
+private double flight_price;
+
+/**
+ * @return the flight_price
+ */
+public double getFlight_price() {
+  return flight_price;
+}
+/**
+ * @param flight_price the flight_price to set
+ */
+public void setFlight_price(double flight_price) {
+  this.flight_price = flight_price;
+}
+/**
+ * @return the flight_date
+ */
+public Date getFlight_date() {
+  return flight_date;
+}
+/**
+ * @param flight_date the flight_date to set
+ */
+public void setFlight_date(Date flight_date) {
+  this.flight_date = flight_date;
+}
 private Timestamp flight_scheduled_departure_timestamp;
 private Timestamp flight_scheduled_arrival_timestamp;
 private int flight_first_class_cabin_luggage_limit;
 private String seatNumber;
 private String seatClass;
+/**
+ * @return the seatNumber
+ */
+public String getSeatNumber() {
+  return seatNumber;
+}
+/**
+ * @param seatNumber the seatNumber to set
+ */
+public void setSeatNumber(String seatNumber) {
+  this.seatNumber = seatNumber;
+}
+/**
+ * @return the seatClass
+ */
+public String getSeatClass() {
+  return seatClass;
+}
+/**
+ * @param seatClass the seatClass to set
+ */
+public void setSeatClass(String seatClass) {
+  this.seatClass = seatClass;
+}
+public Timestamp getFlight_scheduled_departure_timestamp() {
+	return flight_scheduled_departure_timestamp;
+}
+public void setFlight_scheduled_departure_timestamp(
+		Timestamp flight_scheduled_departure_timestamp) {
+	this.flight_scheduled_departure_timestamp = flight_scheduled_departure_timestamp;
+}
+public Timestamp getFlight_scheduled_arrival_timestamp() {
+	return flight_scheduled_arrival_timestamp;
+}
+public void setFlight_scheduled_arrival_timestamp(
+		Timestamp flight_scheduled_arrival_timestamp) {
+	this.flight_scheduled_arrival_timestamp = flight_scheduled_arrival_timestamp;
+}
 
 private double flight_first_class_price;
 private double flight_business_class_price;
@@ -37,21 +102,6 @@ private String departureDate;
 private String arrivalDay;
 private String arrivalDate;
 
-
-public Timestamp getFlight_scheduled_departure_timestamp() {
-	return flight_scheduled_departure_timestamp;
-}
-public void setFlight_scheduled_departure_timestamp(
-		Timestamp flight_scheduled_departure_timestamp) {
-	this.flight_scheduled_departure_timestamp = flight_scheduled_departure_timestamp;
-}
-public Timestamp getFlight_scheduled_arrival_timestamp() {
-	return flight_scheduled_arrival_timestamp;
-}
-public void setFlight_scheduled_arrival_timestamp(
-		Timestamp flight_scheduled_arrival_timestamp) {
-	this.flight_scheduled_arrival_timestamp = flight_scheduled_arrival_timestamp;
-}
 
 public String getArrivalDate() {
 	return arrivalDate;
