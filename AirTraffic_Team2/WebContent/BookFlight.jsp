@@ -31,6 +31,7 @@
 
 <!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<script src="Web Pages/gen_validatorv4.js"> </script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -62,7 +63,7 @@ function yesnoCheck() {
 
 <body>
 	
-	<form method="post" action="booking">
+	<form method="post" id="bookFlightForm" action="booking">
 	
 									
 		New Customer<input type="radio" <%
@@ -76,26 +77,47 @@ function yesnoCheck() {
 										
 									%>checked="checked"<%} %>onclick="javascript:yesnoCheck();" name="yesno" id="existingCheck" value="existing"><br>
     <div id="ifNew" style="display:block">
+        <div id='bookFlightForm_fname_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
         First Name <input type='text' id='fname' name='firstName'><br>
+        <div id='bookFlightForm_lname_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
         Last Name  <input type='text' id='lname' name='lastName'>
         Gender <select name="genderDdl">				
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>				
 			    </select>
+	    <div id='bookFlightForm_newCustID_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
 	    Customer ID<input type='text' id='newCustID' name='newCustomerID'><br> 
 	    ID Type <select name="idTypeDdl">				
 				<option value="PASSPORT">PASSPORT</option>
 				<option value="DRIVING LICENCE">DRIVING LICENCE</option>	
 			    </select>
+	    <div id='bookFlightForm_dateOfBirth_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
 	    Date of Birth <input type='text' id='dateOfBirth' name='dob'><br>
+	    
+	    <div id='bookFlightForm_custMobile_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
         Mobile<input type='text' id='custMobile' name='custMobile'>
+        
+        <div id='bookFlightForm_custEmail_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
         Email<input type='text' id='custEmail' name='custEmail'>
+        
         Telephone<input type='text' id='custTelephone' name='custTelephone'>
         Address Line 1 <input type='text' id='custAdl1' name='custAdl1'>
         Address Line 2 <input type='text' id='custAdl2' name='custAdl2'>
         City <input type='text' id='custCity' name='custCity'>
         State  <input type='text' id='custState' name='custState'>
+        
+        <div id='bookFlightForm_custZipcode_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
         Zipcode <input type='text' id='custZipcode' name='custZipcode'>
+        
+        <div id='bookFlightForm_custCountry_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>
         Country <input type='text' id='custCountry' name='custCountry'>
                 
     </div>
@@ -429,5 +451,36 @@ function yesnoCheck() {
 	<%
 	  }
 	%>
+<script language="JavaScript" type="text/javascript">
+  var frmvalidator  = new Validator("bookFlightForm"); 
+  frmvalidator.EnableOnPageErrorDisplay();
+  frmvalidator.EnableMsgsTogether();
+  
+  frmvalidator.addValidation("custEmail","req","Please enter valid Email");
+  frmvalidator.addValidation("custEmail","maxlen=20","For Email, Max length is 30"); 
+  
+  frmvalidator.addValidation("newCustID","req","Please enter valid CustomerID");
+  frmvalidator.addValidation("newCustID","maxlen=20","For CustomerID, Max length is 30"); 
+  
+  frmvalidator.addValidation("fname","req","Please enter First Name");
+  frmvalidator.addValidation("fname","maxlen=20","For First Name, Max length is 30"); 
+  
+  frmvalidator.addValidation("lname","req","Please enter Last Name");
+  frmvalidator.addValidation("lname","maxlen=20","For Last Name, Max length is 30"); 
+  
+  frmvalidator.addValidation("dateOfBirth","req","Please enter valid dateOfBirth");
+  frmvalidator.addValidation("dateOfBirth","maxlen=20","For dateOfBirth, Max length is 30"); 
+  
+  frmvalidator.addValidation("custZipcode","req","Please enter valid Zipcode");
+  frmvalidator.addValidation("custZipcode","maxlen=20","For Zipcode, Max length is 20");
+  
+  frmvalidator.addValidation("custCountry","req","Please enter Country name");
+  frmvalidator.addValidation("custCountry","maxlen=20","For Country, Max length is 20");
+  
+  frmvalidator.addValidation("custMobile","req","Please enter Mobile number");
+  frmvalidator.addValidation("custMobile","maxlen=20","For Mobile, Max length is 20");
+  
+   
+</script>
 </body>
 </html>
