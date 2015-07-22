@@ -32,20 +32,31 @@
 	rel="stylesheet" type="text/css" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script src="Web Pages/gen_validatorv4.js"> </script>
+	
 <script type="text/javascript">
 	function checkAirport(){
-		var deptAirport = document.getElementById("departureAirport").value;
-		var arrAirport = document.getElementById("arrivalAirport").value;
-		alert("Please select different Departure & Arrival Airports");
-		if(deptAirport.equals(arrAirport))
+		var deptAirport = document.getElementById("departureAirport");
+		var arrAirport = document.getElementById("arrivalAirport");
+		
+		
+		/* alert("Please select different Departure & Arrival Airports"); */
+		
+		var deptAirportValue = deptAirport.options[deptAirport.selectedIndex].value;
+        var arrAirportValue = arrAirport.options[arrAirport.selectedIndex].value;        
+        
+		if(deptAirportValue == arrAirportValue)
 			{
 			document.getElementById("addFlightbtn").disabled = true;
 			alert("Please select different Departure & Arrival Airports");
 			}
 	}
 </script>
+	
+
+
+
 
 <title>Add Flights</title>
 </head>
@@ -85,7 +96,7 @@
 			<div class="panel-body"
 				style="background: url(http://www.aldogroup.com/img/DREAMS%20TAKE%20FLIGHT/BANNER_DREAMS-TAKE-FLIGHT.jpg); background-size: cover;">
 
-				<form method=post action="addFlights">
+				<form method=post id="addFlightForm" action="addFlights">
 
 
 					<%
@@ -115,18 +126,23 @@
 						Departure Airport
 						</td>
 						<td>
-						<select name="departureAirport" onchange="checkAirport()">
+						<select name="departureAirport" id="departureAirport" onchange="checkAirport()">
 							<%
 								for (int i = 0; i < airportIataList.size(); i++) {
 							%>
 							<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
 							<%
 								}
-							%></td></tr><tr><td>
-						</select> Arrival Airport
+							%>
+						</select> 
+							</td>
+						</tr><tr><td>
+						
+						
+						Arrival Airport
 						</td>
 						<td>
-						<select name="arrivalAirport"  onchange="checkAirport()">
+						<select name="arrivalAirport" id="arrivalAirport" onchange="checkAirport()">
 							<%
 								for (int i = airportIataList.size() - 1; i >= 0; i--) {
 							%>
@@ -156,7 +172,9 @@
 						<tr><td>						
 						Flight Id
 						</td><td>
-						<input type="text" placeholder="Enter Flight Id" name="flightId"></td></tr>
+						<div id='addFlightForm_flightId_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
+						<input type="text" placeholder="Enter Flight Id" name="flightId" id="flightId"></td></tr>
 						<tr><td> 
 						Scheduled Departure Time </td><td><select name="scheduledDepartureHour"> 
 							<%
@@ -245,13 +263,13 @@
 			<tr><td colspan="6">
 						Select flight scheduled days </td></tr>
 						<tr><td>
-						Sunday <input type="checkbox" name="flightDays" value="Sun"></td><td> 
-						Monday <input type="checkbox" name="flightDays" value="Mon"></td><td> 
-						Tuesday <input type="checkbox" name="flightDays" value="Tues"> </td><td>
-						Wednesday <input type="checkbox" name="flightDays" value="Wednes"> </td><td>
-						Thursday <input type="checkbox" name="flightDays" value="Thurs"> </td><td>
-						Friday <input type="checkbox" name="flightDays" value="Fri"></td><td>
-						Saturday <input type="checkbox" name="flightDays" value="Satur"> </td>
+						Sunday <input type="checkbox" name="flightDays" value="SUN"></td><td> 
+						Monday <input type="checkbox" name="flightDays" value="MON"></td><td> 
+						Tuesday <input type="checkbox" name="flightDays" value="TUES"> </td><td>
+						Wednesday <input type="checkbox" name="flightDays" value="WEDNES"> </td><td>
+						Thursday <input type="checkbox" name="flightDays" value="THURS"> </td><td>
+						Friday <input type="checkbox" name="flightDays" value="FRI"></td><td>
+						Saturday <input type="checkbox" name="flightDays" value="SATUR"> </td>
 
 						<%
 							}
@@ -269,6 +287,15 @@
 			</div>
 		</div>
 	</div>
+<script language="JavaScript" type="text/javascript">
+  var frmvalidator  = new Validator("addFlightForm");
+  frmvalidator.EnableOnPageErrorDisplay();
+  frmvalidator.EnableMsgsTogether();
+  
+  frmvalidator.addValidation("flightId","req","Please enter flight id");
+  frmvalidator.addValidation("flightId","maxlen=20","For flightId, Max length is 20"); 
+   
+</script>
 
 </body>
 </html>
