@@ -19,9 +19,12 @@ import com.AirTraffic.Team2.dao.RunwayDao;
 public class CancelBookingServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-	  
+	try{  
     RequestDispatcher dispatcher = request.getRequestDispatcher("/CancelBooking.jsp");
     dispatcher.forward(request, response);
+  }catch (Throwable e) {
+		request.setAttribute("error", e.getMessage());
+	}
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -30,10 +33,10 @@ public class CancelBookingServlet extends HttpServlet {
     try {
      String ticket_pnr= request.getParameter("ticketPNR").toString();
      CancelTicketDAO ticketDao=new CancelTicketDAO();
-     ticketDao.cancelTicket(ticket_pnr);
-    }catch(Exception e){
-    	e.printStackTrace();
-    }
+    String returnmsg= ticketDao.cancelTicket(ticket_pnr);
+	request.setAttribute("returnmsg", returnmsg);
+    }catch(Throwable e){
+    	request.setAttribute("error", e.getMessage());    }
     RequestDispatcher dispatcher = request.getRequestDispatcher("/CancelBooking.jsp");
     dispatcher.forward(request, response);
   }
