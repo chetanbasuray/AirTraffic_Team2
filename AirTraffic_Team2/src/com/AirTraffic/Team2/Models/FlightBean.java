@@ -14,6 +14,20 @@ private String flight_Id;
 private Time flight_scheduled_departure_time;
 private Time flight_scheduled_arrival_time;
 private Date flight_date;
+private double flight_price;
+
+/**
+ * @return the flight_price
+ */
+public double getFlight_price() {
+  return flight_price;
+}
+/**
+ * @param flight_price the flight_price to set
+ */
+public void setFlight_price(double flight_price) {
+  this.flight_price = flight_price;
+}
 /**
  * @return the flight_date
  */
