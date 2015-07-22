@@ -328,7 +328,7 @@ function startEndDateValidator(){
 										} else {
 											if((request.getAttribute("flights_return")!=null && !(request.getAttribute("flights_return")=="")))
 											{
-											List<FlightBean> flightList = (ArrayList<FlightBean>) request.getAttribute("flights");
+											List<FlightBean> flightList = (ArrayList<FlightBean>) request.getAttribute("flights_return");
 																						
 									%>
 									</div>

@@ -130,12 +130,12 @@ public class FlightDAO extends AbstractDAO {
 	            flight.setFlight_scheduled_arrival_time(resultSet1.getTime(3));
 	            flight.setDepartureDay(resultSet1.getString(7));
 	            flight.setFlight_price(resultSet1.getDouble(6));
-	            flight.setDepartureDate(departureDay);
-	            flight.setArrivalDate(departureDate);
+	            flight.setDepartureDate(arrivalDate);
+	            flight.setArrivalDate(departureDay);
 	            origin.setAirport_iata(resultSet1.getString(4));
 	            destination.setAirport_iata(resultSet1.getString(5));
-	            flightSegmentBean.setOriginAirport(origin);
-	            flightSegmentBean.setDestinationAirport(destination);
+	            flightSegmentBean.setOriginAirport(destination);
+	            flightSegmentBean.setDestinationAirport(origin);
 	            flight.setFlightSegmentBean(flightSegmentBean);;
 	            flightList.add(flight);
 	          } while (resultSet1.next());
