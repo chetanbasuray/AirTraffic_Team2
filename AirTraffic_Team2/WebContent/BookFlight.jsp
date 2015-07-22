@@ -77,19 +77,19 @@ function yesnoCheck() {
 										
 									%>checked="checked"<%} %>onclick="javascript:yesnoCheck();" name="yesno" id="existingCheck" value="existing"><br>
     <div id="ifNew" style="display:block">
-        <div id='bookFlightForm_fname_errorloc' style="color: red;" class='error_strings'>
+        <div id='bookFlightForm_firstName_errorloc' style="color: red;" class='error_strings'>
                        </div><br>
-        First Name <input type='text' id='fname' name='firstName'><br>
-        <div id='bookFlightForm_lname_errorloc' style="color: red;" class='error_strings'>
+        First Name <input type='text' id='firstName' name='firstName'><br>
+        <div id='bookFlightForm_lastName_errorloc' style="color: red;" class='error_strings'>
                        </div><br>
-        Last Name  <input type='text' id='lname' name='lastName'>
+        Last Name  <input type='text' id='lastName' name='lastName'>
         Gender <select name="genderDdl">				
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>				
 			    </select>
-	    <div id='bookFlightForm_newCustID_errorloc' style="color: red;" class='error_strings'>
+	    <div id='bookFlightForm_newCustomerID_errorloc' style="color: red;" class='error_strings'>
                        </div><br>
-	    Customer ID<input type='text' id='newCustID' name='newCustomerID'><br> 
+	    Customer ID<input type='text' id='newCustomerID' name='newCustomerID'><br> 
 	    ID Type <select name="idTypeDdl">				
 				<option value="PASSPORT">PASSPORT</option>
 				<option value="DRIVING LICENCE">DRIVING LICENCE</option>	
@@ -456,17 +456,20 @@ function yesnoCheck() {
   frmvalidator.EnableOnPageErrorDisplay();
   frmvalidator.EnableMsgsTogether();
   
-  frmvalidator.addValidation("custEmail","req","Please enter valid Email");
-  frmvalidator.addValidation("custEmail","maxlen=20","For Email, Max length is 30"); 
   
-  frmvalidator.addValidation("newCustID","req","Please enter valid CustomerID");
-  frmvalidator.addValidation("newCustID","maxlen=20","For CustomerID, Max length is 30"); 
   
-  frmvalidator.addValidation("fname","req","Please enter First Name");
-  frmvalidator.addValidation("fname","maxlen=20","For First Name, Max length is 30"); 
+  frmvalidator.addValidation("custEmail","maxlen=50"); 
+  frmvalidator.addValidation("custEmail","req"); 
+  frmvalidator.addValidation("custEmail","email");
   
-  frmvalidator.addValidation("lname","req","Please enter Last Name");
-  frmvalidator.addValidation("lname","maxlen=20","For Last Name, Max length is 30"); 
+  frmvalidator.addValidation("newCustomerID","req","Please enter valid CustomerID");
+  frmvalidator.addValidation("newCustomerID","maxlen=20","For CustomerID, Max length is 30"); 
+  
+  frmvalidator.addValidation("firstName","req","Please enter First Name");
+  frmvalidator.addValidation("firstName","maxlen=20","For First Name, Max length is 30"); 
+  
+  frmvalidator.addValidation("lastName","req","Please enter Last Name");
+  frmvalidator.addValidation("lastName","maxlen=20","For Last Name, Max length is 30"); 
   
   frmvalidator.addValidation("dateOfBirth","req","Please enter valid dateOfBirth");
   frmvalidator.addValidation("dateOfBirth","maxlen=20","For dateOfBirth, Max length is 30"); 

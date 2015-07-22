@@ -398,8 +398,7 @@ function startEndDateValidator(){
   frmvalidator.addValidation("departureDate","req","Please enter departure date");
   frmvalidator.addValidation("departureDate","maxlen=20","For departureDate, Max length is 20"); 
   
-  frmvalidator.addValidation("arrivalDate","req","Please enter arrival date");
-  frmvalidator.addValidation("arrivalDate","maxlen=20","For arrivalDate, Max length is 20"); 
+  
    
 </script>
 </body>
