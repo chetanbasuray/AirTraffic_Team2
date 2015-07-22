@@ -18,7 +18,6 @@ public class CancelTicketDAO extends AbstractDAO {
 	        preparedStatement1.setString(1, ticket_pnr);
 	        try (ResultSet resultSet1 = preparedStatement1.executeQuery();) {
 	          if (resultSet1.next()) {
-	        	  System.out.println(resultSet1.toString());
 	  	        PreparedStatement preparedStatement2 = connection.prepareStatement(ticketCancelQuery);
 		        preparedStatement2.setString(1, ticket_pnr);
 		        //ResultSet resultSet2 = preparedStatement2.executeQuery();
