@@ -67,7 +67,8 @@ public class FlightDAO extends AbstractDAO {
             destination.setAirport_iata(resultSet1.getString(5));
             flightSegmentBean.setOriginAirport(origin);
             flightSegmentBean.setDestinationAirport(destination);
-            flight.setFlightSegmentBean(flightSegmentBean);;
+            flight.setFlightSegmentBean(flightSegmentBean);
+            flight.setSeatClass(seatClass);
             flightList.add(flight);
           } while (resultSet1.next());
         } else {

@@ -15,5 +15,6 @@ public abstract class AbstractDAO {
 
         return DriverManager.getConnection("jdbc:postgresql://localhost:5432/AIRPORT", "postgres", "Vasantha49!");
 
+
     }
 }

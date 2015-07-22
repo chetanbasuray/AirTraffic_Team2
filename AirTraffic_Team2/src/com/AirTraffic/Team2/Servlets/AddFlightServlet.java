@@ -100,7 +100,7 @@ public class AddFlightServlet extends HttpServlet {
 			    String[] flightDays = request.getParameterValues("flightDays");
 			    
 			    for (int i = 0; i < flightDays.length; i++) {
-			    	daysList.add(flightDays[i]+"day");
+			    	daysList.add(flightDays[i]+"DAY");
 			    }
 			    
 			    flightBean.setFlightDaysList(daysList);

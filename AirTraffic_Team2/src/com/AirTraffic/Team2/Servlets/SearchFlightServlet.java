@@ -57,7 +57,6 @@ public class SearchFlightServlet extends HttpServlet {
 				AirportDAO airportDAO = new AirportDAO();			
 				List<AirportBean> airportIataList = airportDAO.getAirportIata();
 				
-				
 				request.setAttribute("allIata", airportIataList);				
 				request.setAttribute("flights", flightList_departure);
 				request.setAttribute("flights_return", flightList_return);

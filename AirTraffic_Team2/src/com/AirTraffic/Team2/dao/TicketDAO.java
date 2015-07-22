@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.AirTraffic.Team2.Models.AirportBean;
@@ -32,11 +33,10 @@ public class TicketDAO extends AbstractDAO {
 
     String flightsInfoQuery =
         "Select tpf.seatnumber, tpf.seat_class, f.flight_id, "
-    +"fs.origin, fs.destination, tpf.ticket_journeydate,"
-    +" f.flight_scheduleddeparturetime, f.flight_scheduledarrivaltime from" +
-    " ticketpassengerflight tpf, flight f, flightsegment fs "
-    +"where tpf.ticket_id=?"
-    +" and f.flight_id=tpf.flight_id and f.flightsegment_id=fs.flightsegment_id";
+            + "fs.origin, fs.destination, tpf.ticket_journeydate,"
+            + " f.flight_scheduleddeparturetime, f.flight_scheduledarrivaltime from"
+            + " ticketpassengerflight tpf, flight f, flightsegment fs " + "where tpf.ticket_id=?"
+            + " and f.flight_id=tpf.flight_id and f.flightsegment_id=fs.flightsegment_id";
 
 
     try (Connection connection = getConnection();) {
@@ -121,5 +121,78 @@ public class TicketDAO extends AbstractDAO {
       throw e;
     }
     return ticket;
+  }
+
+  public String generateTicket(String flightId, int personId, int currency, int paymentMethod,
+      double flightPrice, Date journeyDate, String seatClass) throws Exception {
+    
+    String insertTicket =
+        "INSERT into ticket values ((Select max(ticket_id)+1 from ticket),?,current_date,?,?,3,?,?,NULL,NULL,NULL) RETURNING ticket_id";
+    String insertTicketPassFlight = "INSERT into ticketpassengerflight values (?,?,?,?,?,?)";
+    int randomNum = 100 + (int) (Math.random() * 999);
+    String pnr = "TICK" + randomNum;
+    try (Connection connection = getConnection()) {
+      //connection.setAutoCommit(false);
+      PreparedStatement generateTicket = connection.prepareStatement(insertTicket);
+      generateTicket.setDouble(1, flightPrice);
+      generateTicket.setString(2, pnr);
+      generateTicket.setInt(3, paymentMethod);
+      generateTicket.setInt(4, currency);
+      generateTicket.setInt(5, personId);
+      try (ResultSet resultSet = generateTicket.executeQuery()) {
+        if (resultSet.next()) {
+          String checkSeats =
+              "select s.seatversion_"+seatClass+"class_seats-(Select count(seatnumber)"
+                  + " from ticketpassengerflight where seat_class=? and flight_id=?)"
+                  + " as availableSeats from flight f, airplane a, airplanebecomesflight abf,"
+                  + " seatversion s where f.flight_id=? and f.flight_id=abf.flight_id and"
+                  + " a.airplane_id=abf.airplane_id and a.seatversion_id=s.seatversion_id;";
+          PreparedStatement getSeatNumber = connection.prepareStatement(checkSeats);
+          String temp =seatClass.substring(0, 1).toUpperCase();
+          seatClass = temp+seatClass.substring(1);
+          getSeatNumber.setString(1, seatClass);
+          getSeatNumber.setString(2, flightId);
+          getSeatNumber.setString(3, flightId);
+          try (ResultSet resultSet1 = getSeatNumber.executeQuery()) {
+            if (resultSet1.next()) {
+              String seatNumber = resultSet1.getString(1);
+              int ticketId = resultSet.getInt(1);
+              PreparedStatement insertPassengerFlightInfo =
+                  connection.prepareStatement(insertTicketPassFlight);
+              insertPassengerFlightInfo.setInt(1, ticketId);
+              insertPassengerFlightInfo.setInt(2, personId);
+              insertPassengerFlightInfo.setString(3, flightId);
+              insertPassengerFlightInfo.setString(4, seatNumber);
+              
+              insertPassengerFlightInfo.setString(5, seatClass);
+              insertPassengerFlightInfo.setDate(6, new java.sql.Date(journeyDate.getTime()));
+              if (insertPassengerFlightInfo.executeUpdate() != 0) {
+                //connection.commit();
+                return pnr;
+              } else {
+                //connection.rollback();
+                throw new Exception("Sorry, couldn't generate Ticket");
+              }
+            } else {
+              //connection.rollback();
+              throw new Exception("Seats not available");
+            }
+          } catch (SQLException e) {
+            //connection.rollback();
+            e.printStackTrace();
+            throw e;
+          }
+        }
+      } catch (SQLException e) {
+        //connection.rollback();
+        e.printStackTrace();
+        throw e;
+      }
+      //connection.rollback();
+      throw new Exception("Sorry, couldn't generate Ticket");
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    }
   }
 }
