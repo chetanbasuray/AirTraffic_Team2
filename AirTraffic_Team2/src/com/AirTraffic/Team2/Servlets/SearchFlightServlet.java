@@ -51,13 +51,16 @@ public class SearchFlightServlet extends HttpServlet {
 			    			    
 				FlightDAO flightDAO = new FlightDAO(); 		
 				
-				List<FlightBean> flightList = flightDAO.getFlights(departureAirport, arrivalAirport, departureDate, arrivalDate, seatClass);			
-			    
+				List<FlightBean> flightList_departure = flightDAO.getFlights_departure(departureAirport, arrivalAirport, departureDate, arrivalDate, seatClass);			
+				List<FlightBean> flightList_return = flightDAO.getFlights_return(departureAirport, arrivalAirport, departureDate, arrivalDate, seatClass);			
+
 				AirportDAO airportDAO = new AirportDAO();			
 				List<AirportBean> airportIataList = airportDAO.getAirportIata();
 				
 				request.setAttribute("allIata", airportIataList);				
-				request.setAttribute("flights", flightList);
+				request.setAttribute("flights", flightList_departure);
+				request.setAttribute("flights_return", flightList_return);
+
 				//request.setAttribute("adultNumber", adultNo);
 				//request.setAttribute("childNumber", childNo);
 				//request.setAttribute("infantNumber", infantNo);
