@@ -56,34 +56,48 @@
 
 
 	<form method="post" action="booking">
-		New Customer<input type="radio" onclick="javascript:yesnoCheck();"
-			name="yesno" id="newCheck"> Existing Customer <input
-			type="radio" checked="checked" onclick="javascript:yesnoCheck();"
-			name="yesno" id="existingCheck"><br>
-		<div id="ifNew" style="display: none">
-			First Name <input type='text' id='fname' name='firstName'><br>
-			Last Name <input type='text' id='lname' name='lastName'>
-			Gender <select name="genderDdl">
+
+		New Customer<input type="radio" onclick="javascript:yesnoCheck();" name="yesno" value="new" id="newCheck"> 
+        Existing Customer <input type="radio" checked="checked" onclick="javascript:yesnoCheck();" name="yesno" value="exists" id="existingCheck"><br>
+    <div id="ifNew" style="display:none">
+        First Name <input type='text' id='fname' name='firstName'><br>
+        Last Name  <input type='text' id='lname' name='lastName'>
+        Gender <select name="genderDdl">				
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>
 			</select> Customer ID<input type='text' id='newCustID' name='newCustomerID'><br>
 			ID Type <select name="idTypeDdl">
 				<option value="PASSPORT">PASSPORT</option>
-				<option value="DRIVING LICENCE">DRIVING LICENCE</option>
-				<option value="Other">Other</option>
-			</select> Date of Birth <input type='text' id='dateOfBirth' name='dob'><br>
-			Mobile<input type='text' id='custMobile' name='custMobile'>
-			Email<input type='text' id='custEmail' name='custEmail'>
-			Telephone<input type='text' id='custTelephone' name='custTelephone'>
-			Address Line 1 <input type='text' id='custAdl1' name='custAdl1'>
-			Address Line 2 <input type='text' id='custAdl2' name='custAdl2'>
-			City <input type='text' id='custCity' name='custCity'> State
-			<input type='text' id='custState' name='custState'> Zipcode <input
-				type='text' id='custZipcode' name='custZipcode'> Country <input
-				type='text' id='custCountry' name='custCountry'>
-		</div>
 
-		<div id="ifExisting" style="display: block">
+				<option value="DRIVING LICENCE">DRIVING LICENCE</option>	
+				<option value="Other">Other</option>			
+			    </select>
+	    Date of Birth <input type='text' id='dateOfBirth' name='dob'><br>
+        Mobile<input type='text' id='custMobile' name='custMobile'>
+        Email<input type='text' id='custEmail' name='custEmail'>
+        Telephone<input type='text' id='custTelephone' name='custTelephone'>
+        Address Line 1 <input type='text' id='custAdl1' name='custAdl1'>
+        Address Line 2 <input type='text' id='custAdl2' name='custAdl2'>
+        City <input type='text' id='custCity' name='custCity'>
+        State  <input type='text' id='custState' name='custState'>
+        Zipcode <input type='text' id='custZipcode' name='custZipcode'>
+        Country <input type='text' id='custCountry' name='custCountry'>
+        Submit <input type='submit' id='custdetails' name='custdetails'>
+        
+    </div>
+    
+    <div id="ifExisting" style="display:block">   
+        Customer ID<input type='text' id='existingCustID' name='existingCustomerID'><br> 
+        <input type="submit" value="View My Data">             
+		<h1 align="center">Booking Information Details</h1>
+		<table width="600" height="300" align=center cellspacing=0 border="0"
+			cellpadding=0>
+			<tr>
+				<td>
+					<fieldset id="fieldhead">
+						<legend>Booking Information</legend>
+						<BR>
+						<div id="ifExisting" style="display: block">
 			Customer ID<input type='text' id='existingCustID'
 				name='existingCustomerID'><br> <input type="submit"
 				value="View My Data">

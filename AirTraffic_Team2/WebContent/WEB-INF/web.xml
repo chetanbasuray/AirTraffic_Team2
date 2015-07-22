@@ -45,4 +45,20 @@
 		<servlet-name>PrintTicketServlet</servlet-name>
 		<url-pattern>/printTicket</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>CancelBookingServlet</servlet-name>
+		<servlet-class>com.AirTraffic.Team2.Servlets.CancelBookingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CancelBookingServlet</servlet-name>
+		<url-pattern>/cancelBooking</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddFlightServlet</servlet-name>
+		<servlet-class>com.AirTraffic.Team2.Servlets.AddFlightServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddFlightServlet</servlet-name>
+		<url-pattern>/addFlights</url-pattern>
+	</servlet-mapping>
 </web-app>
