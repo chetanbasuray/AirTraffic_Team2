@@ -126,7 +126,11 @@
 						Departure Airport
 						</td>
 						<td>
+<<<<<<< HEAD
+						<select name="departureAirport" onChange="checkAirport()">
+=======
 						<select name="departureAirport" id="departureAirport" onchange="checkAirport()">
+>>>>>>> 7664741d4e75458e0b8b7faa3311aab976b91798
 							<%
 								for (int i = 0; i < airportIataList.size(); i++) {
 							%>
@@ -142,7 +146,11 @@
 						Arrival Airport
 						</td>
 						<td>
+<<<<<<< HEAD
+						<select name="arrivalAirport"  onChange="checkAirport()">
+=======
 						<select name="arrivalAirport" id="arrivalAirport" onchange="checkAirport()">
+>>>>>>> 7664741d4e75458e0b8b7faa3311aab976b91798
 							<%
 								for (int i = airportIataList.size() - 1; i >= 0; i--) {
 							%>

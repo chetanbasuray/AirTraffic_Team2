@@ -95,7 +95,7 @@
 							<input type="text" id="ticketPNR" name="ticketPNR" class="form-control">
 						</div>
 						<div class="form-group">
-						<input type="submit" class="btn btn-info" value="Cancel Booking" style="font-face: 'Comic Sans MS'; font-size: larger; color: black;"  >
+						<input type="submit" class="btn btn-info" value="Cancel Ticket" style="font-face: 'Comic Sans MS'; font-size: larger; color: black;"  >
 			</button>
 						</div>
 				</form>

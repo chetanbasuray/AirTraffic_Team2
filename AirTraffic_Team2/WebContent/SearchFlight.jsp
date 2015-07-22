@@ -268,7 +268,6 @@ function startEndDateValidator(){
 										<th>Departure Airport</th>
 										<th>Arrival airport</th>
 										<th>Departure Date</th>
-										<th>Return Date</th>
 										<th>Book Flight</th>
 										
 
@@ -285,7 +284,6 @@ function startEndDateValidator(){
 										<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
 										<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
 										<td><%=flightList.get(i).getDepartureDate()%></td>
-										<td><%=flightList.get(i).getArrivalDate()%></td>
 										<td><a
 											href="booking?flightId=<%=flightList.get(i).getFlight_Id()%>">Book Flight</a></td>
 									
@@ -311,6 +309,84 @@ function startEndDateValidator(){
 		</tr>
 	</table>
 	</div>
+	</div>
+	</div>
+	<% } %>
+	<% if((request.getAttribute("flights_return")!=null && !(request.getAttribute("flights_return")==""))){ %>
+<div class="container">
+<div class="alert alert-info" role="alert">
+<table width="600" height="300" align=center cellspacing=0 border="0"
+		cellpadding=0>
+		<tr>
+			<td>
+					<div class="panel panel-default"><div class="panel-body">Flight Information
+					
+					<table class="table" align=center cellspacing=1 cellpadding=3>					
+							<div align="center">
+								<table class="table" cellpadding="5">
+									<%
+										if (request.getAttribute("error") != null) {
+									%>
+									<div class="alert alert-danger" role="alert">
+									<%=request.getAttribute("error")%>
+									</div>
+									<%
+										} else {
+											if((request.getAttribute("flights_return")!=null && !(request.getAttribute("flights_return")=="")))
+											{
+											List<FlightBean> flightList = (ArrayList<FlightBean>) request.getAttribute("flights_return");
+																						
+									%>
+									</div>
+									<div class="panel-footer">
+
+									<tr>
+										<th>Flight ID</th>
+										<th>Departure Time</th>
+										<th>Arrival Time</th>
+										<th>Departure Airport</th>
+										<th>Arrival airport</th>
+										<th>Return Date</th>
+										<th>Book Flight</th>
+										
+
+									</tr>
+									<%
+											for (int i = 0; i < flightList.size(); i++) {
+									%>
+									
+									<tr>	
+																		
+										<td><%=flightList.get(i).getFlight_Id()%></td>
+										<td><%=flightList.get(i).getFlight_scheduled_departure_time()%></td>
+										<td><%=flightList.get(i).getFlight_scheduled_arrival_time()%></td>										
+										<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
+										<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
+										<td><%=flightList.get(i).getArrivalDate()%></td>
+										<td><a
+											href="booking?flightId=<%=flightList.get(i).getFlight_Id()%>">Book Flight</a></td>
+									
+									</tr>
+									
+									<%
+										}
+									session.setAttribute("flight", flightList);
+									session.setAttribute("adultCount", request.getAttribute("adultNumber"));
+									session.setAttribute("childCount", request.getAttribute("childNumber"));
+									session.setAttribute("infantCount", request.getAttribute("infantNumber"));
+								
+									}
+									
+								}								
+									
+									%>
+									
+								</table>
+								</div>
+					</table>
+			</td>
+		</tr>
+	</table>
 	</div>
 	</div>
 	<% } %>

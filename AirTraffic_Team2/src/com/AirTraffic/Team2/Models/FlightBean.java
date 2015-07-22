@@ -45,7 +45,6 @@ private Timestamp flight_scheduled_arrival_timestamp;
 private int flight_first_class_cabin_luggage_limit;
 private String seatNumber;
 private String seatClass;
-
 /**
  * @return the seatNumber
  */
