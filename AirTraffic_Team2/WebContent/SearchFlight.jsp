@@ -184,7 +184,7 @@ function editcount(element){
     <button class="btn btn-primary btn-sm" id="Infantplus" type="button" onclick="editcount(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     </td>
     <td align = "center" valign="bottom">
-<select>
+<select name="class">
   <option value="economy">Economy</option>
   <option value="business">Business</option>
   <option value="first">First Class</option>
