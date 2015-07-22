@@ -63,33 +63,28 @@
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body"
-				style="background: url(http://www.airarabia.com/sites/airarabia/files/styles/medium_coupon/public/Cancel_Flight_360X170_pxl.jpg?itok=Y8y671G-); background-size: cover;">
+				style="background: url(https://lh3.googleusercontent.com/proxy/mvLixCPJj8P7mAONpA43N1iasEkd-iTnz957KlREkjoIHnT52rSn55GTdpLSYh713ITk3V-HWmdxH24K9nuBdCjpR7E3GymiQhKqJolJeYqLMYUMITtfTtsOvRzsdj_wX8GmTUmTEw=w426-h239-p); background-size: cover;">
 
-				<form role="form" method="post" action="./cancelBooking"
+				<form role="form" method="post" action="cancelBooking" onSubmit="alert('Ticket has been Cancelled');
 					accept-charset="UTF-8">
 					<%
-					  if (request.getAttribute("error") != null) {
+						if (request.getAttribute("error") != null) {
 					%>
-					<div class="alert alert-warning alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<%=request.getAttribute("error")%></div>
-
+					<h3><label>PNR doesnot exist or the ticket has been cancelled already</label></h3>
+					<!-- <%=request.getAttribute("error")%> -->
 					<%
-					  }
-					  if (request.getAttribute("success") != null) {
+						} else {
+							if(request.getAttribute("returnmsg")!=null && request.getAttribute("returnmsg").equals("success")){
 					%>
-
-					<div class="alert alert-warning alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<%=request.getAttribute("success")%></div>
-					<%
-					  }
+					<h3><label>Ticket has been cancelled</label> </h3><br>
+					<% 
+						}									
+							if(request.getAttribute("returnmsg")!=null && request.getAttribute("returnmsg").equals("false")){
+								%>
+								<h3><label>PNR doesnot exist or the ticket has been cancelled already</label></h3><br>
+								<% 
+							}
+						}
 					%>
 
 
@@ -100,10 +95,7 @@
 							<input type="text" id="ticketPNR" name="ticketPNR" class="form-control">
 						</div>
 						<div class="form-group">
-						<button type="button" class="btn btn-info"
-				onclick="location.href='./cancelBooking';">
-				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
-					Cancel Booking </span>
+						<input type="submit" class="btn btn-info" value="Cancel Booking" style="font-face: 'Comic Sans MS'; font-size: larger; color: black;"  >
 			</button>
 						</div>
 				</form>
