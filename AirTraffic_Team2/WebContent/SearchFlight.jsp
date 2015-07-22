@@ -35,7 +35,7 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-
+<script src="Web Pages/gen_validatorv4.js"> </script>
 <script type="text/javascript"> 
 
 $(document).ready(function() {
@@ -149,7 +149,7 @@ function startEndDateValidator(){
 <div class="panel panel-default">
   <div class="panel-body" style="background: url(http://nyulocal.com/wp-content/uploads/2013/10/The-plane-flying-at-sunset-airliner-photography_1920x1080.jpg);background-size: cover;">
 
-	<form method=post action="searchFlight">
+	<form method=post id="searchFlightForm" action="searchFlight">
 
 		
 	<%
@@ -179,9 +179,13 @@ function startEndDateValidator(){
 			<%}%>			
 			</select> 
 				
-			<br> <br> 
+			<br> <br>
+			<div id='searchFlightForm_departureDate_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
 			<label >Departure Date</label> <input
 				type="text" id="departureDate"  name="departureDate"> <br> 
+			<div id='searchFlightForm_arrivalDate_errorloc' style="color: red;" class='error_strings'>
+                       </div><br>  
 			<label >Return Date</label> <input
 				type="text" id="arrivalDate" name="arrivalDate" onchange="startEndDateValidator()">  <br> 
 <table class = "table">
@@ -308,5 +312,17 @@ function startEndDateValidator(){
 	</div>
 	</div>
 	<% } %>
+<script language="JavaScript" type="text/javascript">
+  var frmvalidator  = new Validator("searchFlightForm");
+  frmvalidator.EnableOnPageErrorDisplay();
+  frmvalidator.EnableMsgsTogether();
+  
+  frmvalidator.addValidation("departureDate","req","Please enter departure date");
+  frmvalidator.addValidation("departureDate","maxlen=20","For departureDate, Max length is 20"); 
+  
+  frmvalidator.addValidation("arrivalDate","req","Please enter arrival date");
+  frmvalidator.addValidation("arrivalDate","maxlen=20","For arrivalDate, Max length is 20"); 
+   
+</script>
 </body>
 </html>
