@@ -41,9 +41,11 @@
 $(document).ready(function() {
 	$("#departureDate").datepicker({
 		dateFormat : "yy-mm-dd"
+		,minDate: 0
 	});		
 	$("#arrivalDate").datepicker({
-		dateFormat : "yy-mm-dd"
+		dateFormat : "yy-mm-dd",
+		minDate: 0
 	});	
 });
 
@@ -313,7 +315,7 @@ function startEndDateValidator(){
 	</div>
 	<% } %>
 <script language="JavaScript" type="text/javascript">
-  var frmvalidator  = new Validator("searchFlightForm");
+  var frmvalidator  = new Validator("searchFlightForm"); 
   frmvalidator.EnableOnPageErrorDisplay();
   frmvalidator.EnableMsgsTogether();
   
