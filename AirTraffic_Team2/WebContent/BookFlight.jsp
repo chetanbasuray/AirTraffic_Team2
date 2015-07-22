@@ -340,14 +340,16 @@ function yesnoCheck() {
 									<th>Departure Airport</th>
 									<th>Arrival Airport</th>
 									<th>Departure Date</th>
-									<th>Arrival Date</th>
+								    <!-- <th>Arrival Date</th>  -->
 									<th>Flight Price</th>
 									<th>Seat Class</th>
 								</tr>
 								<%
 								  List<FlightBean> flightList = (List<FlightBean>) session.getAttribute("flight");
-
+								String flightId = request.getParameter("flightId").trim();
+								
 								    for (int i = 0; i < flightList.size(); i++) {
+								if(flightList.get(i).getFlight_Id().equals(flightId)){
 								%>
 								<tr>
 
@@ -358,12 +360,12 @@ function yesnoCheck() {
 									<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport()
               .getAirport_iata()%></td>
 									<td><%=flightList.get(i).getDepartureDate()%></td>
-									<td><%=flightList.get(i).getArrivalDate()%></td>
+									<%-- <td><%=flightList.get(i).getArrivalDate()%></td> --%> 
 <td><%=flightList.get(i).getFlight_price()%></td>
 <td><%=flightList.get(i).getSeatClass()%></td>
 								</tr>
 								<%
-								  }
+								}}
 								%>
 								<%-- <%								
 									
@@ -402,25 +404,29 @@ function yesnoCheck() {
 	<%
 	  if (request.getAttribute("personDetails") != null
 	        && !request.getAttribute("personDetails").equals("")) {
-	      List<BookingBean> bookPersonDetail =
+	    List<FlightBean> flightList1 = (List<FlightBean>) session.getAttribute("flight");
+	    List<BookingBean> bookPersonDetail =
 	          (ArrayList<BookingBean>) request.getAttribute("personDetails");
+	    for (int i = 0; i < flightList.size(); i++) {
+			if(flightList.get(i).getFlight_Id().equals(flightId)){
+			%>
 	%>
 	<form role="form" action="bookTicket" method="post">
 		<input type="text" style="display: none"
-			value="<%=flightList.get(0).getFlight_Id()%>" name="flightId" />
+			value="<%=flightList.get(i).getFlight_Id()%>" name="flightId" />
 			<input type="text" style="display: none"
-			value="<%=flightList.get(0).getSeatClass()%>" name="seatClass" />
+			value="<%=flightList.get(i).getSeatClass()%>" name="seatClass" />
 			<input type="text" style="display: none"
-			value="<%=flightList.get(0).getFlight_price()%>" name="flightPrice" />
+			value="<%=flightList.get(i).getFlight_price()%>" name="flightPrice" />
 			<input type="text" style="display: none"
-			value="<%=flightList.get(0).getDepartureDate().toString()%>" name="journeyDate" />
+			value="<%=flightList.get(i).getDepartureDate().toString()%>" name="journeyDate" />
 			<input
 			type="text" style="display: none"
-			value="<%=bookPersonDetail.get(0).getPersonBean().getPerson_id()%>"
+			value="<%=bookPersonDetail.get(i).getPersonBean().getPerson_id()%>"
 			name="personId">
 			<input
 			type="text" style="display: none"
-			value="<%=bookPersonDetail.get(0).getPersonBean().getPerson_lname()%>"
+			value="<%=bookPersonDetail.get(i).getPersonBean().getPerson_lname()%>"
 			name="lastname">
 			<div class="form-group">
             <label for="paymentMethod">Choose your payment method</label>
@@ -445,7 +451,7 @@ function yesnoCheck() {
           </div>
 			 <input type="submit" value="Book">
 		<%
-		  }
+			}}}
 		%>
 	</form>
 	<%

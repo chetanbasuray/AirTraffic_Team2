@@ -106,7 +106,7 @@ public class FlightDAO extends AbstractDAO {
 	                + " where (flightdetails.origin=? and flightdetails.destination=? and flightday.flight_dayofweek=?);";
 	  List<FlightBean> flightList = new ArrayList<FlightBean>();
 
-	    String departureDay = arrivalDate;
+	    String arrrivalDay = arrivalDate;
 	    java.util.Date date;
 	    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	    date = formatter.parse(arrivalDate);
@@ -131,13 +131,14 @@ public class FlightDAO extends AbstractDAO {
 	            flight.setFlight_scheduled_arrival_time(resultSet1.getTime(3));
 	            flight.setDepartureDay(resultSet1.getString(7));
 	            flight.setFlight_price(resultSet1.getDouble(6));
-	            flight.setDepartureDate(arrivalDate);
-	            flight.setArrivalDate(departureDay);
+	            flight.setDepartureDate(arrrivalDay);
+	            flight.setArrivalDate(arrivalDate);
 	            origin.setAirport_iata(resultSet1.getString(4));
 	            destination.setAirport_iata(resultSet1.getString(5));
 	            flightSegmentBean.setOriginAirport(destination);
 	            flightSegmentBean.setDestinationAirport(origin);
-	            flight.setFlightSegmentBean(flightSegmentBean);;
+	            flight.setFlightSegmentBean(flightSegmentBean);
+	            flight.setSeatClass(seatClass);
 	            flightList.add(flight);
 	          } while (resultSet1.next());
 	        } else {

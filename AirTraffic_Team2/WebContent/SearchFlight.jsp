@@ -255,7 +255,7 @@ function startEndDateValidator(){
 										} else {
 											if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")=="")))
 											{
-											List<FlightBean> flightList = (ArrayList<FlightBean>) request.getAttribute("flights");
+											List<FlightBean> flightList1 = (ArrayList<FlightBean>) request.getAttribute("flights");
 																						
 									%>
 									</div>
@@ -273,25 +273,25 @@ function startEndDateValidator(){
 
 									</tr>
 									<%
-											for (int i = 0; i < flightList.size(); i++) {
+											for (int i = 0; i < flightList1.size(); i++) {
 									%>
 									
 									<tr>	
 																		
-										<td><%=flightList.get(i).getFlight_Id()%></td>
-										<td><%=flightList.get(i).getFlight_scheduled_departure_time()%></td>
-										<td><%=flightList.get(i).getFlight_scheduled_arrival_time()%></td>										
-										<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getDepartureDate()%></td>
+										<td><%=flightList1.get(i).getFlight_Id()%></td>
+										<td><%=flightList1.get(i).getFlight_scheduled_departure_time()%></td>
+										<td><%=flightList1.get(i).getFlight_scheduled_arrival_time()%></td>										
+										<td><%=flightList1.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
+										<td><%=flightList1.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
+										<td><%=flightList1.get(i).getDepartureDate()%></td>
 										<td><a
-											href="booking?flightId=<%=flightList.get(i).getFlight_Id()%>">Book Flight</a></td>
+											href="booking?flightId=<%=flightList1.get(i).getFlight_Id()%>">Book Flight</a></td>
 									
 									</tr>
 									
 									<%
 										}
-									session.setAttribute("flight", flightList);
+									//session.setAttribute("flight", flightList1);
 									session.setAttribute("adultCount", request.getAttribute("adultNumber"));
 									session.setAttribute("childCount", request.getAttribute("childNumber"));
 									session.setAttribute("infantCount", request.getAttribute("infantNumber"));
@@ -362,7 +362,7 @@ function startEndDateValidator(){
 										<td><%=flightList.get(i).getFlight_scheduled_arrival_time()%></td>										
 										<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
 										<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getArrivalDate()%></td>
+										<td><%=flightList.get(i).getDepartureDate()%></td>
 										<td><a
 											href="booking?flightId=<%=flightList.get(i).getFlight_Id()%>">Book Flight</a></td>
 									
@@ -370,7 +370,10 @@ function startEndDateValidator(){
 									
 									<%
 										}
-									session.setAttribute("flight", flightList);
+									
+									List<FlightBean> flightList1 = (ArrayList<FlightBean>) request.getAttribute("flights");
+									flightList1.addAll(flightList);
+									session.setAttribute("flight", flightList1);
 									session.setAttribute("adultCount", request.getAttribute("adultNumber"));
 									session.setAttribute("childCount", request.getAttribute("childNumber"));
 									session.setAttribute("infantCount", request.getAttribute("infantNumber"));
