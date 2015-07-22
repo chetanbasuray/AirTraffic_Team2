@@ -293,7 +293,6 @@ function editcount(element){
 	</table>
 	</div>
 	</div>
-	</div>
 	<% } %>
 </body>
 </html>

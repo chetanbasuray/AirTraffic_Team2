@@ -147,7 +147,7 @@
 						Departure Airport
 						</td>
 						<td>
-						<select name="departureAirport" onchange="checkAirport()">
+						<select name="departureAirport" onChange="checkAirport()">
 							<%
 								for (int i = 0; i < airportIataList.size(); i++) {
 							%>
@@ -158,7 +158,7 @@
 						</select> Arrival Airport
 						</td>
 						<td>
-						<select name="arrivalAirport"  onchange="checkAirport()">
+						<select name="arrivalAirport"  onChange="checkAirport()">
 							<%
 								for (int i = airportIataList.size() - 1; i >= 0; i--) {
 							%>
@@ -277,13 +277,13 @@
 			<tr><td colspan="6">
 						Select flight scheduled days </td></tr>
 						<tr><td>
-						Sunday <input type="checkbox" name="flightDays" value="Sun"></td><td> 
-						Monday <input type="checkbox" name="flightDays" value="Mon"></td><td> 
-						Tuesday <input type="checkbox" name="flightDays" value="Tues"> </td><td>
-						Wednesday <input type="checkbox" name="flightDays" value="Wednes"> </td><td>
-						Thursday <input type="checkbox" name="flightDays" value="Thurs"> </td><td>
-						Friday <input type="checkbox" name="flightDays" value="Fri"></td><td>
-						Saturday <input type="checkbox" name="flightDays" value="Satur"> </td>
+						Sunday <input type="checkbox" name="flightDays" value="SUN"></td><td> 
+						Monday <input type="checkbox" name="flightDays" value="MON"></td><td> 
+						Tuesday <input type="checkbox" name="flightDays" value="TUES"> </td><td>
+						Wednesday <input type="checkbox" name="flightDays" value="WEDNES"> </td><td>
+						Thursday <input type="checkbox" name="flightDays" value="THURS"> </td><td>
+						Friday <input type="checkbox" name="flightDays" value="FRI"></td><td>
+						Saturday <input type="checkbox" name="flightDays" value="SATUR"> </td>
 
 						<%
 							}
