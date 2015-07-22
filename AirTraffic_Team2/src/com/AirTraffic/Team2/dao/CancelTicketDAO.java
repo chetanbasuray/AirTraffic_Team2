@@ -29,6 +29,10 @@ public class CancelTicketDAO extends AbstractDAO {
 					connection.rollback();
 				  }
 				}
+	          else{
+	        	  returnmsg = "false";
+				  connection.rollback();
+	          }
 				connection.commit();
 			}		
 			} catch (SQLException e) {
