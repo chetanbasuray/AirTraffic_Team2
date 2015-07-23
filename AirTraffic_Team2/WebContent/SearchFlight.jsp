@@ -93,13 +93,13 @@ function editcount(element){
 }
 
 </script>
-<script>
+<!-- <script>
 $(document).ready(function(){  
   $("select").change(function() {   
     $("select").not(this).find("option[value="+ $(this).val() + "]").attr('disabled', true);
   }); 
 }); 
-</script>
+</script> -->
 
 <script>
 function startEndDateValidator(){    
@@ -112,7 +112,23 @@ function startEndDateValidator(){
     }
 }
 </script>
-
+<script type="text/javascript">
+	function checkAirport(){
+		var deptAirport = document.getElementById("departureAirportDdl");
+		var arrAirport = document.getElementById("arrivalAirportDdl");
+		
+		
+		/* alert("Please select different Departure & Arrival Airports"); */
+		
+		var deptAirportValue = deptAirport.options[deptAirport.selectedIndex].value;
+        var arrAirportValue = arrAirport.options[arrAirport.selectedIndex].value;        
+        
+		if(deptAirportValue == arrAirportValue)
+			{
+						alert("Please select different Departure & Arrival Airports");
+			}
+	}
+</script>
 
 <title>Search FLight</title>
 </head>
@@ -165,14 +181,14 @@ function startEndDateValidator(){
 		%>
 
 		<div align="center">
-			Departure Airport<select name="departureAirportDdl">
+			Departure Airport<select name="departureAirportDdl" id="departureAirportDdl" onchange="checkAirport()">
 				<% for (int i = 0; i < airportIataList.size(); i++) {	 %>		
 				<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
 				<%}%>				
 			</select>
 			<br>
 			
-			Arrival Airport<select name="arrivalAirportDdl">		
+			Arrival Airport<select name="arrivalAirportDdl" id="arrivalAirportDdl" onchange="checkAirport()">		
 			<% for (int i = 0; i < airportIataList.size(); i++) {	 %>				
 				<option value="<%=airportIataList.get(i).getAirport_iata()%>"><%=airportIataList.get(i).getAirport_iata()%></option>
 <%}
@@ -185,7 +201,7 @@ function startEndDateValidator(){
 			<div id='searchFlightForm_departureDate_errorloc' style="color: red;" class='error_strings'>
                        </div><br>  
 			<label >Departure Date</label> <input
-				type="text" id="departureDate"  name="departureDate"> <br> 
+				type="text" id="departureDate"  name="departureDate" onchange="startEndDateValidator()"> <br> 
 			<div id='searchFlightForm_arrivalDate_errorloc' style="color: red;" class='error_strings'>
                        </div><br>  
 			<label >Return Date</label> <input
