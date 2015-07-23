@@ -103,9 +103,11 @@ public class BookFlightDAO extends AbstractDAO {
 		String query2 = "insert into personrole values(?, ?)";
 		
 		boolean returnmsg = false;
-		
+				
 		try (Connection connection = getConnection()){
-			connection.setAutoCommit(false);
+			try {
+				connection.setAutoCommit(false);
+			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, locationBean.getLocation_line_1());
 			preparedStatement.setString(2, locationBean.getLocation_line_2());
@@ -144,6 +146,13 @@ public class BookFlightDAO extends AbstractDAO {
 			
 			connection.commit();
 			returnmsg = true;
+			}
+			catch(SQLException e){
+				connection.rollback();
+				returnmsg = false;
+				e.printStackTrace();
+				throw e;
+			}
 			
 	}catch (SQLException e) {
 		returnmsg = false;
@@ -156,4 +165,5 @@ public class BookFlightDAO extends AbstractDAO {
 		return returnmsg;
 		}
 	}
+
 }

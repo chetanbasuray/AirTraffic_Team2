@@ -233,14 +233,15 @@ function startEndDateValidator(){
 	</div>
 </div>
 </div>
-<% if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")==""))){ %>
+<% 
+if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")==""))){ %>
 <div class="container">
 <div class="alert alert-info" role="alert">
 <table width="600" height="300" align=center cellspacing=0 border="0"
 		cellpadding=0>
 		<tr>
 			<td>
-					<div class="panel panel-default"><div class="panel-body">Flight Information
+					<div class="panel panel-default"><div class="panel-body">Departure Flight Information
 					
 					<table class="table" align=center cellspacing=1 cellpadding=3>					
 							<div align="center">
@@ -253,9 +254,9 @@ function startEndDateValidator(){
 									</div>
 									<%
 										} else {
-											if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")=="")))
-											{
-											List<FlightBean> flightList1 = (ArrayList<FlightBean>) request.getAttribute("flights");
+											//if((request.getAttribute("flights")!=null && !(request.getAttribute("flights")=="")))
+											//{
+										List<FlightBean> flightList1 = (ArrayList<FlightBean>) request.getAttribute("flights");
 																						
 									%>
 									</div>
@@ -285,17 +286,14 @@ function startEndDateValidator(){
 										<td><%=flightList1.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
 										<td><%=flightList1.get(i).getDepartureDate()%></td>
 										<td><a
-											href="booking?flightId=<%=flightList1.get(i).getFlight_Id()%>">Book Flight</a></td>
+											href="booking?num=<%=i%>&list=1">Book Flight</a></td>
 									
 									</tr>
 									
 									<%
 										}
-									//session.setAttribute("flight", flightList1);
-									session.setAttribute("adultCount", request.getAttribute("adultNumber"));
-									session.setAttribute("childCount", request.getAttribute("childNumber"));
-									session.setAttribute("infantCount", request.getAttribute("infantNumber"));
-								
+									
+									session.setAttribute("flightListDeparture", flightList1);								
 									}
 									
 								}								
@@ -311,7 +309,7 @@ function startEndDateValidator(){
 	</div>
 	</div>
 	</div>
-	<% } %>
+
 	<% if((request.getAttribute("flights_return")!=null && !(request.getAttribute("flights_return")==""))){ %>
 <div class="container">
 <div class="alert alert-info" role="alert">
@@ -319,7 +317,7 @@ function startEndDateValidator(){
 		cellpadding=0>
 		<tr>
 			<td>
-					<div class="panel panel-default"><div class="panel-body">Flight Information
+					<div class="panel panel-default"><div class="panel-body">Return Flight Information
 					
 					<table class="table" align=center cellspacing=1 cellpadding=3>					
 							<div align="center">
@@ -332,9 +330,9 @@ function startEndDateValidator(){
 									</div>
 									<%
 										} else {
-											if((request.getAttribute("flights_return")!=null && !(request.getAttribute("flights_return")=="")))
-											{
-											List<FlightBean> flightList = (ArrayList<FlightBean>) request.getAttribute("flights_return");
+											//if((request.getAttribute("flights_return")!=null && !(request.getAttribute("flights_return")=="")))
+											//{
+											List<FlightBean> flightList2 = (ArrayList<FlightBean>) request.getAttribute("flights_return");
 																						
 									%>
 									</div>
@@ -352,31 +350,27 @@ function startEndDateValidator(){
 
 									</tr>
 									<%
-											for (int i = 0; i < flightList.size(); i++) {
+											for (int i = 0; i < flightList2.size(); i++) {
 									%>
 									
 									<tr>	
 																		
-										<td><%=flightList.get(i).getFlight_Id()%></td>
-										<td><%=flightList.get(i).getFlight_scheduled_departure_time()%></td>
-										<td><%=flightList.get(i).getFlight_scheduled_arrival_time()%></td>										
-										<td><%=flightList.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
-										<td><%=flightList.get(i).getDepartureDate()%></td>
+										<td><%=flightList2.get(i).getFlight_Id()%></td>
+										<td><%=flightList2.get(i).getFlight_scheduled_departure_time()%></td>
+										<td><%=flightList2.get(i).getFlight_scheduled_arrival_time()%></td>										
+										<td><%=flightList2.get(i).getFlightSegmentBean().getDestinationAirport().getAirport_iata()%></td>
+										<td><%=flightList2.get(i).getFlightSegmentBean().getOriginAirport().getAirport_iata()%></td>
+										<td><%=flightList2.get(i).getDepartureDate()%></td>
 										<td><a
-											href="booking?flightId=<%=flightList.get(i).getFlight_Id()%>">Book Flight</a></td>
+											href="booking?num=<%=i%>&list=2">Book Flight</a></td>
 									
 									</tr>
 									
 									<%
 										}
 									
-									List<FlightBean> flightList1 = (ArrayList<FlightBean>) request.getAttribute("flights");
-									flightList1.addAll(flightList);
-									session.setAttribute("flight", flightList1);
-									session.setAttribute("adultCount", request.getAttribute("adultNumber"));
-									session.setAttribute("childCount", request.getAttribute("childNumber"));
-									session.setAttribute("infantCount", request.getAttribute("infantNumber"));
+									//flightList1.addAll(flightList2);
+									session.setAttribute("flightListReturn", flightList2);
 								
 									}
 									
@@ -392,14 +386,14 @@ function startEndDateValidator(){
 	</table>
 	</div>
 	</div>
-	<% } %>
+
 <script language="JavaScript" type="text/javascript">
   var frmvalidator  = new Validator("searchFlightForm"); 
   frmvalidator.EnableOnPageErrorDisplay();
   frmvalidator.EnableMsgsTogether();
   
   frmvalidator.addValidation("departureDate","req","Please enter departure date");
-  frmvalidator.addValidation("departureDate","maxlen=20","For departureDate, Max length is 20"); 
+  frmvalidator.addValidation("departureDate","maxlen=15","For departureDate, Max length is 15"); 
   
   
    

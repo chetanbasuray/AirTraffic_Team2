@@ -84,7 +84,9 @@ public class AddFlightServlet extends HttpServlet {
 			    flightBean.setFlight_first_class_checkin_luggage_limit(Integer.parseInt(request.getParameter("firstclasscheckinluggage")));
 			    flightBean.setFlight_business_class_checkin_luggage_limit(Integer.parseInt(request.getParameter("businessclasscheckinluggage")));
 			    flightBean.setFlight_economy_class_cabin_luggage_limit(Integer.parseInt(request.getParameter("economyclasscheckinluggage")));
-			    
+			    flightBean.setFlight_first_class_price(Double.parseDouble(request.getParameter("firstclassPrice")));
+			    flightBean.setFlight_economy_class_price(Double.parseDouble(request.getParameter("economyclassPrice")));
+			    flightBean.setFlight_business_class_price(Double.parseDouble(request.getParameter("businessclassPrice")));
     			    
 			    List<AirplaneBean> airplanebeanList = new ArrayList<AirplaneBean>();
 			    

@@ -126,11 +126,7 @@
 						Departure Airport
 						</td>
 						<td>
-<<<<<<< HEAD
-						<select name="departureAirport" onChange="checkAirport()">
-=======
 						<select name="departureAirport" id="departureAirport" onchange="checkAirport()">
->>>>>>> 7664741d4e75458e0b8b7faa3311aab976b91798
 							<%
 								for (int i = 0; i < airportIataList.size(); i++) {
 							%>
@@ -146,11 +142,7 @@
 						Arrival Airport
 						</td>
 						<td>
-<<<<<<< HEAD
-						<select name="arrivalAirport"  onChange="checkAirport()">
-=======
 						<select name="arrivalAirport" id="arrivalAirport" onchange="checkAirport()">
->>>>>>> 7664741d4e75458e0b8b7faa3311aab976b91798
 							<%
 								for (int i = airportIataList.size() - 1; i >= 0; i--) {
 							%>
@@ -264,6 +256,17 @@
 						<input type="text" name="businessclasscheckinluggage"></td><td>
 						<input type="text" name="economyclasscheckinluggage"></td>
 				</tr>
+					<tr><td>
+							First Class Ticket price</td><td>
+						Business Class Ticket price  </td><td>
+						Economy Class Ticket price </td><td>
+						</td></tr>
+						<tr><td>
+						<input type="text" name="firstclassPrice"></td><td>
+						<input type="text" name="businessclassPrice"></td><td>
+						<input type="text" name="economyclassPrice"></td><td>
+						</td></tr>
+	
 			<tr>	
 			<td>
 			</table>
@@ -301,7 +304,7 @@
   frmvalidator.EnableMsgsTogether();
   
   frmvalidator.addValidation("flightId","req","Please enter flight id");
-  frmvalidator.addValidation("flightId","maxlen=20","For flightId, Max length is 20"); 
+  frmvalidator.addValidation("flightId","maxlen=10","For flightId, Max length is 10"); 
    
 </script>
 

@@ -14,8 +14,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.AirTraffic.Team2.Models.BookingBean;
+import com.AirTraffic.Team2.Models.FlightBean;
 import com.AirTraffic.Team2.Models.LocationBean;
 import com.AirTraffic.Team2.Models.PersonBean;
 import com.AirTraffic.Team2.dao.BookFlightDAO;
@@ -30,7 +32,29 @@ public class BookFlightServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
+			if(request.getParameter("num")!=null && request.getParameter("list")!=null ){
+			HttpSession session = request.getSession();
+			
+			int selectedNum = Integer.parseInt(request.getParameter("num"));
+			String selectedFlightJourneyType = request.getParameter("list").toString();
+			
+			List<FlightBean> flightList = null;
+			List<FlightBean> flightListSelected = new ArrayList<FlightBean>();
+			
+			if(selectedFlightJourneyType.equals("1")){
+				flightList = (ArrayList<FlightBean>)session.getAttribute("flightListDeparture");
+				flightListSelected.add(flightList.get(selectedNum));
+				session.setAttribute("flight", flightListSelected);
+			}
+			else
+			{
+				flightList = (ArrayList<FlightBean>)session.getAttribute("flightListReturn");
+				flightListSelected.add(flightList.get(selectedNum));
+				session.setAttribute("flight", flightListSelected);
+			}
+			
 			request.setAttribute("newCustAdded", "No");
+			}
 
 		} catch (Throwable e) {
 			request.setAttribute("error", e.getMessage());
@@ -54,7 +78,6 @@ public class BookFlightServlet extends HttpServlet {
 			    request.setAttribute("personDetails", bookPersonDetails);
 			    request.setAttribute("newCustAdded", "No");
 			 }else{
-				 //String customerId= request.getParameter("newCustomerID").toString();
 				 PersonBean personBean = new PersonBean();
 				 personBean.setPerson_fname(request.getParameter("firstName").toString());
 				 personBean.setPerson_lname(request.getParameter("lastName").toString());
@@ -62,7 +85,6 @@ public class BookFlightServlet extends HttpServlet {
 				 personBean.setPerosn_official_id_type(request.getParameter("idTypeDdl"));
 				 personBean.setPerson_official_id(request.getParameter("newCustomerID"));
 				 personBean.setPerson_official_id(request.getParameter("newCustomerID"));
-				 //DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 				 DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				 
 				 Date dob = (Date) format.parse(request.getParameter("dob"));
@@ -83,7 +105,6 @@ public class BookFlightServlet extends HttpServlet {
 				 
 				 if(newCustomerAdded == true)
 				 {
-					 //String customerId = request.getParameter("newCustomerID").toString();
 					 List<BookingBean> bookPersonDetails = bookFlightDAO.getPersonDetails(request.getParameter("newCustomerID"));			
 					 request.setAttribute("personDetails", bookPersonDetails);
 					 request.setAttribute("newCustAdded", "Yes");
@@ -92,6 +113,10 @@ public class BookFlightServlet extends HttpServlet {
              
          } catch (Throwable e) {
              request.setAttribute("error", e.getMessage());
+             
+             if(e.getMessage().equalsIgnoreCase("Database does not have this person information!"))
+            	 request.setAttribute("existingTab","True");
+
          }         
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/BookFlight.jsp");
 		dispatcher.forward(request, response);

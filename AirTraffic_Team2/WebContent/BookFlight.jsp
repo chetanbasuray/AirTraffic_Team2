@@ -63,7 +63,7 @@ function yesnoCheck() {
 
 <body>
 	
-	<form method="post" id="bookFlightForm" action="booking">
+	
 	
 									
 		New Customer<input type="radio" <%
@@ -76,6 +76,9 @@ function yesnoCheck() {
 											
 										
 									%>checked="checked"<%} %>onclick="javascript:yesnoCheck();" name="yesno" id="existingCheck" value="existing"><br>
+    
+    <form method="post" id="bookFlightForm" action="booking">
+    <input type="text" name="yesno" value="new" style="display:none">
     <div id="ifNew" style="display:block">
         <div id='bookFlightForm_firstName_errorloc' style="color: red;" class='error_strings'>
                        </div><br>
@@ -119,12 +122,23 @@ function yesnoCheck() {
         <div id='bookFlightForm_custCountry_errorloc' style="color: red;" class='error_strings'>
                        </div><br>
         Country <input type='text' id='custCountry' name='custCountry'>
-                
+
+<br><input type="submit" value="Add My Details">
+              </form>  
     </div>
 		
-		<input type="submit" value="View My Details/Add My Details">
+
+	
+<% if (request.getAttribute("error") != null) {
+%>
+<h3>No Customer Found</h3>
+<%=request.getAttribute("error")%>
+<%
+} 
+else {
+
 		
-<%  String newCustAddedSuccessfully = request.getAttribute("newCustAdded").toString();
+ String newCustAddedSuccessfully = request.getAttribute("newCustAdded").toString();
 
 	if(newCustAddedSuccessfully.equals("Yes")) { %>    
 	<div id="ifNewAdded" style="display:block">   
@@ -145,13 +159,6 @@ function yesnoCheck() {
 										<h2>Details of Customer</h2>
 									</caption>
 									<%
-										if (request.getAttribute("error") != null) {
-									%>
-									<h3>No Customer Found</h3>
-									<%=request.getAttribute("error")%>
-									<%
-										} 
-									else {
 										if (request.getAttribute("personDetails") != null
 												&& !request.getAttribute("personDetails").equals("")) {
 											
@@ -218,8 +225,11 @@ function yesnoCheck() {
 	
 	    
     <div id="ifExisting" style="display:none">   
+    <form method="post" action="booking">
         Customer ID<input type='text' id='existingCustID' name='existingCustomerID'><br> 
-                     
+  		<input type="text" name="yesno" value="existing" style="display:none">
+  		<input type="submit" value="View My Details" id="ViewCust">                   
+		</form>
 		<h1 align="center">Customer Details</h1>
 
 		<table width="600" height="300" align=center cellspacing=0 border="0"
@@ -239,7 +249,7 @@ function yesnoCheck() {
 									<%
 										if (request.getAttribute("error") != null) {
 									%>
-									<h3>No Flight Found</h3>
+									<h3>No Customer Found</h3>
 									<%=request.getAttribute("error")%>
 									<%
 										} 
@@ -325,14 +335,7 @@ function yesnoCheck() {
 								<caption>
 									<h2>Flight Details</h2>
 								</caption>
-								<%
-								  if (request.getAttribute("error") != null) {
-								%>
-								<h3>No Flight Found</h3>
-								<%=request.getAttribute("error")%>
-								<%
-								  } else {
-								%>
+								
 								<tr>
 									<th>Flight Name</th>
 									<th>Departure Time</th>
@@ -345,11 +348,13 @@ function yesnoCheck() {
 									<th>Seat Class</th>
 								</tr>
 								<%
-								  List<FlightBean> flightList = (List<FlightBean>) session.getAttribute("flight");
-								String flightId = request.getParameter("flightId").trim();
-								
+								List<FlightBean> flightList = (List<FlightBean>) session.getAttribute("flight");
+								//String flightId=null;
+								//if (request.getParameterMap().containsKey("flightId")) {
+								//flightId = request.getParameter("flightId").trim();
+							   	//}
 								    for (int i = 0; i < flightList.size(); i++) {
-								if(flightList.get(i).getFlight_Id().equals(flightId)){
+								//if(flightList.get(i).getFlight_Id().equals(flightId)){
 								%>
 								<tr>
 
@@ -365,21 +370,9 @@ function yesnoCheck() {
 <td><%=flightList.get(i).getSeatClass()%></td>
 								</tr>
 								<%
-								}}
+								//}
+								}
 								%>
-								<%-- <%								
-									
-									  Document document = new Document();
-									  PdfWriter.getInstance(document, new FileOutputStream("//home//adnan//Downloads//testpdf1.pdf"));
-								      document.open();       
-									  for (int i = 0; i < flightList.size(); i++) {
-										 document.add(new Paragraph("Flight ID ::"+flightList.get(i).getFlight_Id()
-										                           +"\n Departure Day ::"+flightList.get(i).getDepartureDay()
-										                           +"\n Arrival Day ::"+flightList.get(i).getArrivalDay()));											 
-										} 					
-									%> --%>
-									
-									
 								</table>
 							</div>
 						</table>
@@ -402,15 +395,18 @@ function yesnoCheck() {
 	</div>
 
 	<%
+	if (request.getAttribute("error") != null) {
+
+	} else {
+
 	  if (request.getAttribute("personDetails") != null
 	        && !request.getAttribute("personDetails").equals("")) {
 	    List<FlightBean> flightList1 = (List<FlightBean>) session.getAttribute("flight");
 	    List<BookingBean> bookPersonDetail =
 	          (ArrayList<BookingBean>) request.getAttribute("personDetails");
 	    for (int i = 0; i < flightList.size(); i++) {
-			if(flightList.get(i).getFlight_Id().equals(flightId)){
+			//if(flightList.get(i).getFlight_Id().equals(flightId)){
 			%>
-	%>
 	<form role="form" action="bookTicket" method="post">
 		<input type="text" style="display: none"
 			value="<%=flightList.get(i).getFlight_Id()%>" name="flightId" />
@@ -454,14 +450,12 @@ function yesnoCheck() {
 			}}}
 		%>
 	</form>
-	<%
-	  }
-	%>
+
 <script language="JavaScript" type="text/javascript">
-  var frmvalidator  = new Validator("bookFlightForm"); 
+  var frmvalidator  = new Validator("bookFlightForm");
+  
   frmvalidator.EnableOnPageErrorDisplay();
   frmvalidator.EnableMsgsTogether();
-  
   
   
   frmvalidator.addValidation("custEmail","maxlen=50"); 
@@ -489,7 +483,6 @@ function yesnoCheck() {
   frmvalidator.addValidation("custMobile","req","Please enter Mobile number");
   frmvalidator.addValidation("custMobile","maxlen=20","For Mobile, Max length is 20");
   
-   
 </script>
 </body>
 </html>

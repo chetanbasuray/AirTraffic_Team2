@@ -42,7 +42,7 @@
 				<span class="glyphicon glyphicon-print" aria-hidden="true">
 					Print Ticket </span>
 			</button>
-			<button type="button" class="btn btn-success"
+			<button type="button" class="btn btn-warning"
 				onclick="location.href='./cancelBooking';">
 				<span class="glyphicon glyphicon-scissors" aria-hidden="true">
 					Cancel Booking </span>
@@ -52,7 +52,7 @@
 				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true">
 					Add Flights </span>
 			</button>
-			<button type="button" class="btn btn-warning"
+			<button type="button" class="btn btn-success"
 				onclick="location.href='./assignRunway';">
 				<span class="glyphicon glyphicon-king" aria-hidden="true">
 					Assign Runway </span>
@@ -81,7 +81,7 @@
 						}									
 							if(request.getAttribute("returnmsg")!=null && request.getAttribute("returnmsg").equals("false")){
 								%>
-								<h3><label>PNR doesnot exist or the ticket has been cancelled already</label></h3><br>
+								<h3><label>PNR does not exist or the ticket has been cancelled already</label></h3><br>
 								<% 
 							}
 						}

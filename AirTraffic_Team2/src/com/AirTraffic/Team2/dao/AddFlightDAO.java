@@ -22,7 +22,7 @@ public class AddFlightDAO extends AbstractDAO{
 		String returnmsg = null;
 		String query = "select flightsegment_id from flightsegment where origin = ? and destination = ?";
 		String query1 = "insert into flightsegment(flightsegment_numberofmiles, origin, destination) values(?, ?, ?)";
-		String query2 = "insert into flight values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query2 = "insert into flight values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String query3 = "insert into flightday values(?, ?)";
 		
 		try (Connection connection = getConnection()) {
@@ -73,6 +73,9 @@ public class AddFlightDAO extends AbstractDAO{
 			preparedStatement.setInt(8, flightBean.getFlight_business_class_checkin_luggage_limit());
 			preparedStatement.setInt(9, flightBean.getFlight_economy_class_checkin_luggage_limit());
 			preparedStatement.setInt(10, flightBean.getFlightSegmentBean().getFlightsegment_id());
+			preparedStatement.setDouble(11, flightBean.getFlight_business_class_price());
+			preparedStatement.setDouble(12, flightBean.getFlight_economy_class_price());
+			preparedStatement.setDouble(13, flightBean.getFlight_first_class_price());
 			
 			if(preparedStatement.executeUpdate() != 0){
 				preparedStatement = connection.prepareStatement(query3);
